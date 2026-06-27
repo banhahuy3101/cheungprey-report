@@ -8,6 +8,7 @@ import {
   PiggyBank,
   Plus,
 } from "lucide-react";
+import ComingSoon from "@/components/ui/ComingSoon";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/Table";
@@ -100,6 +101,9 @@ const khrFormatter = (v: unknown): string => {
 };
 
 export default function DashboardPage() {
+  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  if (isComing) return <ComingSoon />;
+
   const [summary, setSummary] = useState<FinanceSummary | null>(null);
   const [breakdown, setBreakdown] = useState<Array<{ category: Category; amount: number; percentage: number }>>([]);
   const [trend, setTrend] = useState<Array<{ monthLabel: string; income: number; expense: number }>>([]);

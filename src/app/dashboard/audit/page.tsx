@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { listAuditLogs, formatDate } from "@/lib/data";
 import type { AuditLog } from "@/lib/types";
+import ComingSoon from "@/components/ui/ComingSoon";
 import { RefreshCw } from "lucide-react";
 
 const ACTION_LABEL: Record<string, string> = {
@@ -30,6 +31,9 @@ const ACTION_VARIANT: Record<string, "success" | "danger" | "info" | "warning" |
 };
 
 export default function AuditPage() {
+  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  if (isComing) return <ComingSoon />;
+
   const [logs, setLogs] = useState<AuditLog[]>(() => listAuditLogs());
 
   const refresh = () => setLogs(listAuditLogs());

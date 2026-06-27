@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Input, Label, Select } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { Badge } from "@/components/ui/Badge";
+import ComingSoon from "@/components/ui/ComingSoon";
 import {
   createTransaction,
   deleteTransaction,
@@ -39,6 +40,9 @@ const TYPE_LABELS: Record<TransactionType, string> = {
 };
 
 export default function TransactionsPage() {
+  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  if (isComing) return <ComingSoon />;
+
   const [items, setItems] = useState<Transaction[]>(() => listTransactions());
   const [editing, setEditing] = useState<Transaction | null>(null);
   const [open, setOpen] = useState(false);
