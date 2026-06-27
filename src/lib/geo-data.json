@@ -1,0 +1,29 @@
+{
+  "provinces": [
+    { "code": "01", "kh": "បន្ទាយមានជ័យ", "en": "Banteay Meanchey" },
+    { "code": "02", "kh": "បាត់ដំបង", "en": "Battambang" },
+    { "code": "03", "kh": "កំពង់ចាម", "en": "Kampong Cham" },
+    { "code": "04", "kh": "កំពង់ឆ្នាំង", "en": "Kampong Chhnang" },
+    { "code": "05", "kh": "កំពង់ស្ពឺ", "en": "Kampong Speu" },
+    { "code": "06", "kh": "កំពង់ធំ", "en": "Kampong Thom" },
+    { "code": "07", "kh": "កំពត", "en": "Kampot" },
+    { "code": "08", "kh": "កណ្តាល", "en": "Kandal" },
+    { "code": "09", "kh": "កោះកុង", "en": "Koh Kong" },
+    { "code": "10", "kh": "ក្រចេះ", "en": "Kratié" },
+    { "code": "11", "kh": "មណ្ឌលគិរី", "en": "Mondulkiri" },
+    { "code": "12", "kh": "ភ្នំពេញ", "en": "Phnom Penh" },
+    { "code": "13", "kh": "ព្រះវិហារ", "en": "Preah Vihear" },
+    { "code": "14", "kh": "ព្រៃវែង", "en": "Prey Veng" },
+    { "code": "15", "kh": "ពោធិ៍សាត់", "en": "Pursat" },
+    { "code": "16", "kh": "រតនគិរី", "en": "Ratanakiri" },
+    { "code": "17", "kh": "សៀមរាប", "en": "Siem Reap" },
+    { "code": "18", "kh": "ព្រះសីហនុ", "en": "Preah Sihanouk" },
+    { "code": "19", "kh": "ស្ទឹងត្រែង", "en": "Stung Treng" },
+    { "code": "20", "kh": "ស្វាយរៀង", "en": "Svay Rieng" },
+    { "code": "21", "kh": "តាកែវ", "en": "Takeo" },
+    { "code": "22", "kh": "ឧត្តរមានជ័យ", "en": "Oddar Meanchey" },
+    { "code": "23", "kh": "កែប", "en": "Kep" },
+    { "code": "24", "kh": "បៃលិន", "en": "Pailin" },
+    { "code": "25", "kh": "ត្បូងឃ្មុំ", "en": "Tboung Khmum" }
+  ]
+}

@@ -1,0 +1,41 @@
+Go to Supabase Dashboard → Authentication → Users
+Click Add User
+Enter: 
+Toggle Auto-confirm email ON
+Click Create user
+
+super.admin@company.com 
+
+admin123
+
+You need to set up in this new Supabase project:
+1. Authentication → Settings → Turn Confirm email OFF
+2. SQL Editor → Run this:
+CREATE TABLE IF NOT EXISTS public.profiles (
+  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  email text NOT NULL UNIQUE,
+  name text NOT NULL,
+  role text NOT NULL DEFAULT 'commune_staff'
+    CHECK (role IN ('super_admin','district_chief','district_admin','commune_chief','commune_staff','finance_viewer')),
+  district_id text NOT NULL DEFAULT '',
+  commune_id text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+CREATE TABLE IF NOT EXISTS public.commune_evaluations (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_by text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  formData jsonb NOT NULL
+);
+3. Authentication → Users → Add User → Create super.admin@company.com / admin123 with Auto-confirm ON
+4. Then run:
+INSERT INTO public.profiles (id, email, name, role, district_id)
+SELECT id, 'super.admin@company.com', 'Super Admin', 'super_admin', ''
+FROM auth.users WHERE email = 'super.admin@company.com'
+  AND NOT EXISTS (SELECT 1 FROM public.profiles WHERE email = 'super.admin@company.com');
+Login: super.admin@company.com / admin123
+
+  -d '{"email":"super.admin@company.com","password":"admin123","email_confirm":true}'
