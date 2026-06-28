@@ -88,7 +88,7 @@ const sub_1_1_rows: DataRow[] = [
   },
   {
     id: "១.១.១០",
-    indicator: "ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានបរិញ្ញបត្រជាន់ខ្ពស់ឡើង (រាប់តែមាជិកមកពីគណបក្សប្រជាជនកម្ពុជា)",
+    indicator: "ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានបរិញ្ញបត្រជាន់ខ្ពស់ឡើង(រាប់តែមាជិកមកពីគណបក្សប្រជាជនកម្ពុជា)",
     render: (d) => <>ចំនួន {toKhmerNum(d.cpdMasterDegree)} នាក់</>,
     fields: ["cpdMasterDegree"],
   },
@@ -100,7 +100,7 @@ const sub_1_1_rows: DataRow[] = [
   },
   {
     id: "១.១.១២",
-    indicator: "ចំនួនសរុបនៃសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់ (រាប់តែមាជិកមកពីគណបក្សប្រជាជនកម្ពុជា)",
+    indicator: "ចំនួនសរុបនៃសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់(រាប់តែមាជិកមកពីគណបក្សប្រជាជនកម្ពុជា)",
     render: (d) => <>ចំនួន {toKhmerNum(d.cpdTotalCouncilMembers)} នាក់</>,
     fields: ["cpdTotalCouncilMembers"],
   },
@@ -130,7 +130,7 @@ const sub_1_1_rows: DataRow[] = [
   },
   {
     id: "១.១.១៧",
-    indicator: "ចំនួនសរុបស្មៀនឃុំ សង្កាត់ជាយុវជន (ក្រោម៤៥ឆ្នាំ)",
+    indicator: "ចំនួនសរុបស្មៀនឃុំ សង្កាត់ជាជាយុវជន (ក្រោម៤៥ឆ្នាំ)",
     render: (d) => <>ចំនួន {toKhmerNum(d.youthClerks)} នាក់</>,
     fields: ["youthClerks"],
   },
@@ -148,7 +148,7 @@ const sub_1_1_rows: DataRow[] = [
   },
   {
     id: "១.១.២០",
-    indicator: "ចំនួនថ្នាក់ដឹកនាំភូមិជាយុវជន (ក្រោម៤៥ឆ្នាំ)",
+    indicator: "ចំនួនថ្នាក់ដឹកនាំភូមិជាជាយុវជន (ក្រោម៤៥ឆ្នាំ)",
     render: (d) => <>ចំនួន {toKhmerNum(d.youthVillageLeaders)} នាក់</>,
     fields: ["youthVillageLeaders"],
   },
@@ -229,7 +229,7 @@ const sub_1_3_rows: DataRow[] = [
   },
   {
     id: "១.៣.២",
-    indicator: "ករណីវិវាទរវាងប្រជាពលរដ្ឋនិងប្រជាពលរដ្ឋពាក់ព័ន្ធនឹងនិន្នាការនយោបាយ",
+    indicator: "ករីណវិវាទរវាងប្រជាពលរដ្ឋនិងប្រជាពលរដ្ឋពាក់ព័ន្ធនឹងនិន្នាការ នយោបាយ",
     render: (d) => <>ចំនួន {toKhmerNum(d.politicalDisputeCases)} ករណី</>,
     fields: ["politicalDisputeCases"],
   },

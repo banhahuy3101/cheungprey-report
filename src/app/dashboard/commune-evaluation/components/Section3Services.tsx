@@ -111,7 +111,7 @@ const sub_3_2_rows: DataRow[] = [
   },
   {
     id: "៣.២.៤",
-    indicator: "គ្រូបង្រៀននៅតាមតំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាក ត្រូវបានគាំទ្រ និងលើកទឹកចិត្ត (មាន ឬគ្មាន)",
+    indicator: "គ្រូបង្រៀននៅតាមតំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាក ត្រូវបានគាំទ្រ និងលើកទឹកចិត្ត (មាន ឬគ្មាន) ដែរឬទេ?",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -177,7 +177,7 @@ const sub_3_3_rows: DataRow[] = [
   },
   {
     id: "៣.៣.៤",
-    indicator: "ការលើកទឹកចិត្តដល់គ្រូពេទ្យដែលទៅបំពេញការងារនៅតំបន់ជនបទ តំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាក",
+    indicator: "ការលើកទឹកចិត្តដល់គ្រូពេទ្យដែលទៅបំពេញការងារនៅតំបន់ជនបទ តំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាក តាមរយៈការផ្តល់ប្រាក់ឧបត្ថម្ភបន្ថែម ឬ",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -222,13 +222,13 @@ const sub_3_3_rows: DataRow[] = [
   },
   {
     id: "៣.៣.៧",
-    indicator: "ចំនួនកម្មវិធី កិច្ចប្រជុំ ឬព្រឹត្តការណ៍ផ្សព្វផ្សាយការយល់ដឹងរបស់ប្រជាពលរដ្ឋក្នុងការវិធានសុខាភិបាល ដើម្បីបង្ការ និងទប់ស្កាត់ការឆ្លងរាលដាលជំងឺកូវីដ១៩ និងកាត់បន្ថយការប្រឈមនឹងកត្តាហានិភ័យនៃជំងឺមិនឆ្លង",
+    indicator: "ចំនួនកម្មវិធី កិច្ចប្រជុំ ឬព្រឹត្តការណ៍ផ្សព្វផ្សាយការយល់ដឹងរបស់ប្រជាពលរដ្ឋក្នុងការវិធានសុខាភិបាល ដើម្បីបង្ការ និងទប់ស្កាត់ការឆ្លងរាលដាលជំងឺកូវីដ១៩ និងកាត់បន្ថយការប្រឈមនឹងកត្តាហានិភ័យនៃជំងឺមិនឆ្លង ដែលបានរៀបចំ",
     render: (d) => <>ចំនួន {toKhmerNum(d.healthAwarenessPrograms)} ដង</>,
     fields: ["healthAwarenessPrograms"],
   },
   {
     id: "៣.៣.៨",
-    indicator: "ចំនួនប្រជាពលរដ្ឋចូលរួមកម្មវិធី កិច្ចប្រជុំ ឬព្រឹត្តការណ៍ផ្សព្វផ្សាយការយល់ដឹងរបស់ប្រជាពលរដ្ឋក្នុងការវិធានសុខាភិបាល",
+    indicator: "ចំនួនប្រជាពលរដ្ឋចូលរួមកម្មវិធី កិច្ចប្រជុំ ឬព្រឹត្តការណ៍ផ្សព្វផ្សាយការយល់ដឹងរបស់ប្រជាពលរដ្ឋក្នុងការវិធានសុខាភិបាល ដើម្បីបង្ការ និងទប់ស្កាត់ការឆ្លងរាលដាលជំងឺកូវីដ១៩ និងកាត់បន្ថយការប្រឈមនឹងកត្តាហានិភ័យនៃជំងឺមិនឆ្លង",
     render: (d) => <>ចំនួន {toKhmerNum(d.healthAwarenessParticipants)} នាក់</>,
     fields: ["healthAwarenessParticipants"],
   },
@@ -273,13 +273,13 @@ const sub_3_4_rows: DataRow[] = [
   },
   {
     id: "៣.៤.៧",
-    indicator: "ការជួសជុលផ្លូវបេតុងចំនួន",
+    indicator: "ការជួសជុលផ្លូវថ្មី ផ្លូវបេតុងចំនួន",
     render: (d) => <>ចំនួន {toKhmerNum(d.repairConcreteRoads)} ខ្សែ</>,
     fields: ["repairConcreteRoads"],
   },
   {
     id: "៣.៤.៨",
-    indicator: "ការជួសជុលផ្លូវបេតុងស្មើនឹងប្រវែង",
+    indicator: "ការជួសជុលផ្លូវថ្មី ស្មើនឹងប្រវែង",
     render: (d) => <>ចំនួន {toKhmerNum(d.repairConcreteRoadKm)} គីឡូម៉ែត្រ</>,
     fields: ["repairConcreteRoadKm"],
   },
@@ -315,7 +315,7 @@ const sub_3_4_rows: DataRow[] = [
   },
   {
     id: "៣.៤.១៤",
-    indicator: "ផ្លូវក្រាលក្រួសក្រហម ត្រូវបានប្រែក្លាយទៅជាផ្លូវកៅស៊ូ ឬផ្លូវបេតុងមានចំនួន",
+    indicator: "ផ្លូវក្រាលក្រួសក្រហម ត្រូវបានប្រែក្លាយទៅជាផ្លូវកៅស៊ូ ឬផ្លូវបេតុងមានក្នុងឃុំ សង្កាត់មានចំនួន",
     render: (d) => <>ចំនួន {toKhmerNum(d.upgradedRoadKm)} គីឡូម៉ែត្រ</>,
     fields: ["upgradedRoadKm"],
   },
@@ -381,7 +381,7 @@ const sub_3_5_rows: DataRow[] = [
 const sub_3_6_rows: DataRow[] = [
   {
     id: "៣.៦.១",
-    indicator: "ចំនួនព្រែក បឹងបួរ អូរធម្មជាតិ និងជីកស្រះ ដែលត្រូវបានស្តារ និងជីកថ្មី",
+    indicator: "ចំនួនព្រែក បឹងបួរ អូរធម្មជាតិ និងជីកស្រះ ដែលត្រូវបានស្ថារ និងជីកថ្មី",
     render: (d) => <>ចំនួន {toKhmerNum(d.restoredWaterBodies)} កន្លែង</>,
     fields: ["restoredWaterBodies"],
   },
@@ -450,7 +450,7 @@ const sub_3_8_rows: DataRow[] = [
   },
   {
     id: "៣.៨.២",
-    indicator: "មន្ទីរពេទ្យបង្អែក មណ្ឌលសុខភាពមានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps)",
+    indicator: "មន្ទីរពេទ្យបង្អែក មណ្ឌលសុខភាពមានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps) សម្រាប់ផ្ដល់ព័ត៌មាន និងចែករំលែកឯកសារនានា",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -465,7 +465,7 @@ const sub_3_8_rows: DataRow[] = [
   },
   {
     id: "៣.៨.៣",
-    indicator: "សាលារៀនមានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps)",
+    indicator: "សាលារៀនមានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps) សម្រាប់ផ្ដល់ព័ត៌មាន និងចែករំលែកឯកសារនានា",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -480,7 +480,7 @@ const sub_3_8_rows: DataRow[] = [
   },
   {
     id: "៣.៨.៤",
-    indicator: "ប៉ុស្ដិ៍នគរបាល មានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps)",
+    indicator: "ប៉ុស្ដិ៍នគរបាល មានវេបសាយ (Website) និងកម្មវិធីទូរស័ព្ទឆ្លាតវៃ (Apps) សម្រាប់ផ្ដល់ព័ត៌មាន និងចែករំលែកឯកសារនានា",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -504,7 +504,7 @@ const sub_3_9_rows: DataRow[] = [
   },
   {
     id: "៣.៩.២",
-    indicator: "ឃុំ សង្កាត់បានរៀបចំផែនការប្រើប្រាស់ដី និងប្លង់គោលប្រើប្រាស់ដីទីប្រជុំជន",
+    indicator: "ឃុំ សង្កាត់បានរៀបចំផែនការប្រើប្រាស់ដី និងប្លង់គោលប្រើប្រាស់ដីទីប្រជុំជនរបស់ (មាន ឬគ្មាន)",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -561,7 +561,7 @@ const sub_3_10_rows: DataRow[] = [
   },
   {
     id: "៣.១០.៥",
-    indicator: "ឃុំ សង្កាត់ដែលបានបញ្ច្រាបគោលការណ៍អភិវឌ្ឍន៍ដោយចីរភាពទៅក្នុងផែនការអភិវឌ្ឍន៍ឃុំ សង្កាត់",
+    indicator: "ឃុំ សង្កាត់ដែលបានបញ្រ្ជាបគោលការណ៍អភិវឌ្ឍន៍ដោយចីរភាពទៅក្នុងផែនការអភិវឌ្ឍន៍ឃុំ សង្កាត់",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
