@@ -64,12 +64,21 @@ export default function EvaluationDetailPage({
       // Additional location-based check: ensure user can access this evaluation's location
       if (user.role !== "super_admin" && user.districtId) {
         const geo = await loadGeoData();
-        const userDistrict = geo.districts.find((d) => d.code === user.districtId);
+        const userDistrict = geo.districts.find(
+          (d) => d.code === user.districtId,
+        );
         if (userDistrict && data.district !== userDistrict.kh) {
           setAccessDenied(true);
         }
-        if (user.communeId && (user.role === "commune_chief" || user.role === "commune_staff" || user.role === "finance_viewer")) {
-          const userCommune = geo.communes.find((c) => c.code === user.communeId);
+        if (
+          user.communeId &&
+          (user.role === "commune_chief" ||
+            user.role === "commune_staff" ||
+            user.role === "finance_viewer")
+        ) {
+          const userCommune = geo.communes.find(
+            (c) => c.code === user.communeId,
+          );
           if (userCommune && data.commune !== userCommune.kh) {
             setAccessDenied(true);
           }
@@ -96,7 +105,9 @@ export default function EvaluationDetailPage({
           </Link>
           <div>
             <p className="text-sm text-slate-500">វាយតម្លៃឃុំ / សង្កាត់</p>
-            <h1 className="text-2xl font-semibold text-slate-900">មើលព័ត៌មានវាយតម្លៃ</h1>
+            <h1 className="text-2xl font-semibold text-slate-900">
+              មើលព័ត៌មានវាយតម្លៃ
+            </h1>
           </div>
         </div>
         <Card>
