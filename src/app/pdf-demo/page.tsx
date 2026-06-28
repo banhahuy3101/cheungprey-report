@@ -1,8 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
+import dynamic from 'next/dynamic';
+import { pdf } from '@react-pdf/renderer';
 import { MyDocument } from './MyDocument';
+
+const PDFDownloadLink = dynamic(
+  () => import('@react-pdf/renderer').then((mod) => mod.PDFDownloadLink),
+  { ssr: false },
+);
 
 export default function PDFDemoPage() {
   const [generating, setGenerating] = useState(false);

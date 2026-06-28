@@ -290,7 +290,8 @@ function EmergencyForm({ form, update }: {
   );
 }
 
-const STEP_FORMS: Record<StepKey, React.FC<{ form: ReturnType<typeof defaultUserProfile>; update: (key: keyof typeof form, value: (typeof form)[key]) => void; users: UserListItem[]; onUserCreated?: (userId: string) => void; onNewUser?: (user: UserListItem) => void }>> = {
+type ProfileForm = ReturnType<typeof defaultUserProfile>;
+const STEP_FORMS: Record<StepKey, React.FC<{ form: ProfileForm; update: (key: keyof ProfileForm, value: ProfileForm[keyof ProfileForm]) => void; users: UserListItem[]; onUserCreated?: (userId: string) => void; onNewUser?: (user: UserListItem) => void }>> = {
   personal: PersonalForm,
   party: PartyForm,
   work: WorkForm,
