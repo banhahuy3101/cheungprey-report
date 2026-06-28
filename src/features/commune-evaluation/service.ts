@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/client";
-import type { EvaluationData } from "@/lib/evaluation-schema";
+import type { EvaluationData } from "@/features/commune-evaluation/schema";
 
 export type CommuneEvaluationRecord = {
   id: string;
@@ -19,6 +19,12 @@ export type CommuneEvaluationListItem = {
   created_at: string;
   updated_at: string;
 };
+
+export interface EvaluationFilter {
+  province?: string;
+  district?: string;
+  commune?: string;
+}
 
 const TABLE = "commune_evaluations";
 
@@ -67,11 +73,23 @@ function recordToCamelCase(record: Record<string, unknown>): CommuneEvaluationRe
   return result as CommuneEvaluationRecord;
 }
 
-export async function listEvaluations(): Promise<CommuneEvaluationListItem[]> {
+export async function listEvaluations(filter?: EvaluationFilter): Promise<CommuneEvaluationListItem[]> {
   const supabase = createClient();
-  const { data, error } = await supabase
+  let query = supabase
     .from(TABLE)
-    .select("id, province, district, commune, created_at, updated_at")
+    .select("id, province, district, commune, created_at, updated_at");
+
+  if (filter?.province) {
+    query = query.eq("province", filter.province);
+  }
+  if (filter?.district) {
+    query = query.eq("district", filter.district);
+  }
+  if (filter?.commune) {
+    query = query.eq("commune", filter.commune);
+  }
+
+  const { data, error } = await query
     .order("created_at", { ascending: false });
 
   if (error) throw error;

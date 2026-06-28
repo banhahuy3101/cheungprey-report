@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { Input, Label } from "@/components/ui/Input";
 import { SearchSelect } from "@/components/ui/SearchSelect";
 import { createReport } from "@/lib/data";
-import { listUserProfiles } from "@/lib/user-profile-service";
-import { useAuth } from "@/lib/supabase-auth";
+import { listUserProfiles } from "@/features/users/user-profile-service";
+import { useAuth } from "@/features/auth/supabase-auth";
 
 interface CsvDistrict {
   provinceCode: string;

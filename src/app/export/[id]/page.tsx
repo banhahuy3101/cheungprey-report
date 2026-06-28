@@ -1,5 +1,5 @@
 import { createServiceClient } from "@/utils/supabase/service-client";
-import { generateEvaluationHtml } from "@/lib/generate-evaluation-html";
+import { generateEvaluationHtml } from "@/features/commune-evaluation/generate-html";
 
 const KNOWN_KEYS = new Set([
   "id", "province", "district", "commune",

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Plus, ArrowLeft, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { useAuth } from "@/lib/supabase-auth";
+import { useAuth } from "@/features/auth/supabase-auth";
 
 interface RoleRow {
   key: string;

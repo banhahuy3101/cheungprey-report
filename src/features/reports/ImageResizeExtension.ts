@@ -7,7 +7,7 @@ import { mergeAttributes } from "@tiptap/react";
  * - Deleted by dragging the image outside the editor area
  *
  * Usage:
- *   import { ResizableImage } from "@/lib/ImageResizeExtension";
+ *   import { ResizableImage } from "@/features/reports/ImageResizeExtension";
  *   extensions: [ResizableImage]
  */
 export const ResizableImage = Node.create({

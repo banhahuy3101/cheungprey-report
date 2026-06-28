@@ -1,4 +1,4 @@
-import type { PermissionFlag } from "./data";
+import type { PermissionFlag } from "@/lib/data";
 
 export const PERMISSION_LABELS: Record<PermissionFlag, string> = {
   canWriteTransaction: "សរសេរប្រតិបត្តិការ",
@@ -10,4 +10,8 @@ export const PERMISSION_LABELS: Record<PermissionFlag, string> = {
   canApproveTransaction: "អនុម័តប្រតិបត្តិការ",
   canSendToProvince: "ផ្ញើទៅខេត្ត",
   canManageSystem: "គ្រប់គ្រងប្រព័ន្ធ",
+  canViewEvaluation: "មើលវាយតម្លៃឃុំ",
+  canCreateEvaluation: "បង្កើតវាយតម្លៃឃុំ",
+  canEditEvaluation: "កែប្រែវាយតម្លៃឃុំ",
+  canDeleteEvaluation: "លុបវាយតម្លៃឃុំ",
 };

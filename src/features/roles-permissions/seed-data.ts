@@ -9,7 +9,7 @@ import type {
   Report,
   Transaction,
   User,
-} from "./types";
+} from "@/lib/types";
 
 export const REPORT_PARTS = [
   { key: "summary", label: "1.1 សមតុល្យសរុប (Income - Expense)", group: "ផ្នែកទី១៖ សង្ខេបទូទៅ" },

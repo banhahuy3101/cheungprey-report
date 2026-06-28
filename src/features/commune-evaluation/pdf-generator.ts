@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { CommuneEvaluation } from "@/lib/commune-evaluation";
+import { CommuneEvaluation } from "@/features/commune-evaluation/domain";
 
 const SIEMREAP_URL =
   "https://fonts.gstatic.com/s/siemreap/v30/Gg82N5oFbgLvHAfNl2Yb.ttf";

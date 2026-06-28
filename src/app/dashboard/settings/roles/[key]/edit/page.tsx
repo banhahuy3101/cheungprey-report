@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Loader2, Check, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { useAuth } from "@/lib/supabase-auth";
+import { useAuth } from "@/features/auth/supabase-auth";
 
 interface RoleForm {
   key: string;

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/lib/supabase-auth";
+import { useAuth } from "@/features/auth/supabase-auth";
 import { Button } from "@/components/ui/Button";
 import { Input, Label } from "@/components/ui/Input";
 import { FileText, Eye, EyeOff } from "lucide-react";

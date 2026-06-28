@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import type { CommuneEvaluation } from "@/lib/commune-evaluation";
+import type { CommuneEvaluation } from "@/features/commune-evaluation/domain";
 
 export function generatePDF(data: CommuneEvaluation, communeName: string) {
   const toKhmer = (v: string) => v.split("|")[1] || v;

@@ -5,21 +5,10 @@ import Link from "next/link";
 import { ArrowLeft, Loader2, Pencil } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { useAuth, roleLabel } from "@/lib/supabase-auth";
+import { useAuth, roleLabel } from "@/features/auth/supabase-auth";
 import { type PermissionFlag, PERMISSIONS } from "@/lib/data";
+import { PERMISSION_LABELS } from "@/features/roles-permissions/permission-labels";
 import type { UserRole } from "@/lib/types";
-
-const PERMISSION_LABELS: Record<PermissionFlag, string> = {
-  canWriteTransaction: "សរសេរប្រតិបត្តិការ",
-  canReadTransactions: "មើលប្រតិបត្តិការ",
-  canWriteBudget: "សរសេរថវិកា",
-  canExportPdf: "នាំចេញ PDF",
-  canManageUsers: "គ្រប់គ្រងអ្នកប្រើ",
-  canDownloadReceipt: "ទាញយកវិក័យប័ត្រ",
-  canApproveTransaction: "អនុម័តប្រតិបត្តិការ",
-  canSendToProvince: "ផ្ញើទៅខេត្ត",
-  canManageSystem: "គ្រប់គ្រងប្រព័ន្ធ",
-};
 
 const ALL_ROLES: UserRole[] = [
   "super_admin", "district_chief", "district_admin",

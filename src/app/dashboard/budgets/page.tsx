@@ -8,7 +8,7 @@ import { Input, Label, Select } from "@/components/ui/Input";
 import { Modal } from "@/components/ui/Modal";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/Table";
 import ComingSoon from "@/components/ui/ComingSoon";
-import { useAuth } from "@/lib/supabase-auth";
+import { useAuth } from "@/features/auth/supabase-auth";
 import { createBudget, formatKHR, listBudgets, updateBudget, getBudgetActualSpent } from "@/lib/data";
 import type { Budget, Category } from "@/lib/types";
 

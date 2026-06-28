@@ -1,4 +1,4 @@
-import type { EvaluationData } from "@/lib/evaluation-schema";
+import type { EvaluationData } from "@/features/commune-evaluation/schema";
 import { CheckSquare, Square, SquareCheck } from "lucide-react";
 
 const khmerDigits: Record<string, string> = {

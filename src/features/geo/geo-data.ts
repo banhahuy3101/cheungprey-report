@@ -1,4 +1,4 @@
-import staticProvinces from "@/lib/geo-data.json";
+import staticProvinces from "@/features/geo/geo-data.json";
 
 export interface Province {
   code: string;

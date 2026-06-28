@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, Pencil, Loader2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { useAuth } from "@/lib/supabase-auth";
-import { PERMISSION_LABELS } from "@/lib/permission-labels";
+import { useAuth } from "@/features/auth/supabase-auth";
+import { PERMISSION_LABELS } from "@/features/roles-permissions/permission-labels";
 
 interface FeatureRow {
   key: string;

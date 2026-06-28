@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useAuth } from "@/lib/supabase-auth";
+import { useAuth } from "@/features/auth/supabase-auth";
 import { ROLE_LEVEL } from "@/lib/types";
 import type { User, UserRole, ReportStatus } from "@/lib/types";
 
@@ -16,7 +16,8 @@ export type Resource =
   | "finance_summary"
   | "audit_log"
   | "notification"
-  | "system_config";
+  | "system_config"
+  | "commune_evaluation";
 
 export type Action =
   | "create"
@@ -207,6 +208,41 @@ export function canAccess(
     // ── Audit logs ───────────────────────────────────────
     case "audit_log": {
       return action === "read" && level >= ROLE_LEVEL.district_admin;
+    }
+
+    // ── Commune Evaluation ───────────────────────────────
+    case "commune_evaluation": {
+      const eDistrict = context.districtId ?? context.entityId;
+      const eCommune = context.communeId;
+
+      // super_admin is already handled at function entry
+
+      if (action === "create") {
+        return (
+          (role === "commune_chief" || role === "commune_staff") &&
+          (!eDistrict || eDistrict === districtId)
+        );
+      }
+      if (action === "read") {
+        return (
+          (role === "commune_chief" && eCommune === communeId) ||
+          (role === "commune_staff" && eCommune === communeId) ||
+          (role === "finance_viewer" && eCommune === communeId) ||
+          ((role === "district_admin" || role === "district_chief") && eDistrict === districtId)
+        );
+      }
+      if (action === "update") {
+        return (
+          (role === "commune_chief" && eCommune === communeId) ||
+          ((role === "district_admin" || role === "district_chief") && eDistrict === districtId)
+        );
+      }
+      if (action === "delete") {
+        return (
+          role === "district_admin" || role === "district_chief"
+        );
+      }
+      return false;
     }
 
     // ── Notifications ────────────────────────────────────

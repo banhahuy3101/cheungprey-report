@@ -6,24 +6,78 @@ import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { formatDate } from "@/lib/data";
-import { listEvaluations, deleteEvaluation } from "@/lib/evaluation-service";
-import type { CommuneEvaluationListItem } from "@/lib/evaluation-service";
+import { listEvaluations, deleteEvaluation } from "@/features/commune-evaluation/service";
+import type { CommuneEvaluationListItem, EvaluationFilter } from "@/features/commune-evaluation/service";
+import { useAuth } from "@/features/auth/supabase-auth";
+import { usePermissions } from "@/hooks/usePermissions";
+import { loadGeoData } from "@/features/geo/geo-data";
 
 export default function CommuneEvaluationPage() {
   const [items, setItems] = useState<CommuneEvaluationListItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+  const { can } = usePermissions();
 
   useEffect(() => {
-    listEvaluations().then((data) => {
+    (async () => {
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      let filter: { district?: string; commune?: string } = {};
+
+      if (user.role !== "super_admin" && user.districtId) {
+        // Map user's district/commune codes to Khmer names for filtering
+        const geo = await loadGeoData();
+        const userDistrict = geo.districts.find((d) => d.code === user.districtId);
+        const userCommune = geo.communes.find((c) => c.code === user.communeId);
+
+        if (userCommune && (user.role === "commune_chief" || user.role === "commune_staff" || user.role === "finance_viewer")) {
+          filter = {
+            district: userDistrict?.kh ?? "",
+            commune: userCommune.kh,
+          };
+        } else if (userDistrict) {
+          filter = { district: userDistrict.kh };
+        }
+      }
+
+      const data = await listEvaluations(
+        filter.district || filter.commune ? filter as EvaluationFilter : undefined
+      );
       setItems(data);
       setLoading(false);
-    });
-  }, []);
+    })();
+  }, [user]);
+
+  const canView = can("read", "commune_evaluation", {});
+  const canCreate = can("create", "commune_evaluation", {});
+  const canEdit = can("update", "commune_evaluation", {});
+  const canDelete = can("delete", "commune_evaluation", {});
 
   const handleDelete = async (id: string) => {
     await deleteEvaluation(id);
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
+
+  if (!canView) {
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm text-slate-500">វាយតម្លៃឃុំ / សង្កាត់</p>
+            <h1 className="text-2xl font-semibold text-slate-900">បញ្ជីវាយតម្លៃ</h1>
+          </div>
+        </div>
+        <Card>
+          <CardContent className="p-8 text-center text-slate-500">
+            អ្នកមិនមានសិទ្ធិមើលទិន្នន័យនេះទេ។
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -32,12 +86,14 @@ export default function CommuneEvaluationPage() {
           <p className="text-sm text-slate-500">វាយតម្លៃឃុំ / សង្កាត់</p>
           <h1 className="text-2xl font-semibold text-slate-900">បញ្ជីវាយតម្លៃ</h1>
         </div>
-        <Link href="/dashboard/commune-evaluation/new">
-          <Button className="inline-flex items-center gap-2">
-            <Plus size={16} />
-            បង្កើតថ្មី
-          </Button>
-        </Link>
+        {canCreate && (
+          <Link href="/dashboard/commune-evaluation/new">
+            <Button className="inline-flex items-center gap-2">
+              <Plus size={16} />
+              បង្កើតថ្មី
+            </Button>
+          </Link>
+        )}
       </div>
 
       <Card>
@@ -53,12 +109,14 @@ export default function CommuneEvaluationPage() {
           ) : items.length === 0 ? (
             <div className="rounded-xl border border-dashed border-slate-200 p-8 text-center text-slate-500">
               <p className="mb-4">មិនទាន់មានព័ត៌មានវាយតម្លៃទេ។</p>
-              <Link href="/dashboard/commune-evaluation/new">
-                <Button className="inline-flex items-center gap-2">
-                  <Plus size={16} />
-                  បង្កើតថ្មី
-                </Button>
-              </Link>
+              {canCreate && (
+                <Link href="/dashboard/commune-evaluation/new">
+                  <Button className="inline-flex items-center gap-2">
+                    <Plus size={16} />
+                    បង្កើតថ្មី
+                  </Button>
+                </Link>
+              )}
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -66,7 +124,8 @@ export default function CommuneEvaluationPage() {
                 <thead className="bg-slate-50">
                   <tr>
                     <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">ល.រ</th>
-                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">ខេត្ត / ក្រុង / ស្រុក / ខណ្ឌ</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">រាជធានី / ខេត្ត</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">ក្រុង / ស្រុក / ខណ្ឌ</th>
                     <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">ឃុំ / សង្កាត់</th>
                     <th className="px-4 py-3 text-left text-sm font-medium text-slate-500">កាលបរិច្ឆេទ</th>
                     <th className="px-4 py-3 text-right text-sm font-medium text-slate-500">ការវិភាគ</th>
@@ -76,9 +135,8 @@ export default function CommuneEvaluationPage() {
                   {items.map((item, index) => (
                     <tr key={item.id} className="hover:bg-slate-50">
                       <td className="px-4 py-3 text-sm text-slate-700">{index + 1}</td>
-                      <td className="px-4 py-3 text-sm text-slate-700">
-                        {item.province || ".........."} / {item.district || ".........."}
-                      </td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{item.province || ".........."}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{item.district || ".........."}</td>
                       <td className="px-4 py-3 text-sm text-slate-700">{item.commune || ".........."}</td>
                       <td className="px-4 py-3 text-sm text-slate-500">
                         {formatDate(item.created_at)}
@@ -91,19 +149,23 @@ export default function CommuneEvaluationPage() {
                           >
                             <Eye size={16} />
                           </Link>
-                          <Link
-                            href={`/dashboard/commune-evaluation/${item.id}/edit`}
-                            className="inline-flex items-center gap-1 rounded-lg p-2 text-slate-600 hover:bg-slate-100"
-                          >
-                            <Pencil size={16} />
-                          </Link>
-                          <button
-                            type="button"
-                            onClick={() => handleDelete(item.id)}
-                            className="inline-flex items-center gap-1 rounded-lg p-2 text-red-600 hover:bg-red-50"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                          {canEdit && (
+                            <Link
+                              href={`/dashboard/commune-evaluation/${item.id}/edit`}
+                              className="inline-flex items-center gap-1 rounded-lg p-2 text-slate-600 hover:bg-slate-100"
+                            >
+                              <Pencil size={16} />
+                            </Link>
+                          )}
+                          {canDelete && (
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(item.id)}
+                              className="inline-flex items-center gap-1 rounded-lg p-2 text-red-600 hover:bg-red-50"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          )}
                         </div>
                       </td>
                     </tr>

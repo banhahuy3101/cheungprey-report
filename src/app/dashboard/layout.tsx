@@ -16,7 +16,7 @@ import {
   KeyRound,
 } from "lucide-react";
 import { formatDateObj } from "@/lib/data";
-import { useAuth, roleLabel } from "@/lib/supabase-auth";
+import { useAuth, roleLabel } from "@/features/auth/supabase-auth";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 

@@ -3,7 +3,7 @@
 // and audit logging) is in one place.
 
 import { v4 as uuidv4 } from "uuid";
-import { store } from "./seed-data";
+import { store } from "@/features/roles-permissions/seed-data";
 import type {
   AuditLog,
   Budget,
@@ -38,7 +38,11 @@ export type PermissionFlag =
   | "canDownloadReceipt"
   | "canApproveTransaction"
   | "canSendToProvince"
-  | "canManageSystem";
+  | "canManageSystem"
+  | "canViewEvaluation"
+  | "canCreateEvaluation"
+  | "canEditEvaluation"
+  | "canDeleteEvaluation";
 
 export const PERMISSIONS: Record<UserRole, Record<PermissionFlag, boolean>> = {
   super_admin: {
@@ -51,43 +55,59 @@ export const PERMISSIONS: Record<UserRole, Record<PermissionFlag, boolean>> = {
     canApproveTransaction: true,
     canSendToProvince: true,
     canManageSystem: true,
+    canViewEvaluation: true,
+    canCreateEvaluation: true,
+    canEditEvaluation: true,
+    canDeleteEvaluation: true,
   },
   district_chief: {
     canWriteTransaction: true,
     canReadTransactions: true,
     canWriteBudget: true,
     canExportPdf: true,
-    canManageUsers: true, // can manage commune_chief and commune_staff
+    canManageUsers: true,
     canDownloadReceipt: true,
     canApproveTransaction: true,
     canSendToProvince: true,
     canManageSystem: false,
+    canViewEvaluation: true,
+    canCreateEvaluation: true,
+    canEditEvaluation: true,
+    canDeleteEvaluation: true,
   },
   district_admin: {
     canWriteTransaction: true,
     canReadTransactions: true,
     canWriteBudget: true,
     canExportPdf: true,
-    canManageUsers: true, // can manage commune_staff only
+    canManageUsers: true,
     canDownloadReceipt: true,
     canApproveTransaction: true,
     canSendToProvince: false,
     canManageSystem: false,
+    canViewEvaluation: true,
+    canCreateEvaluation: true,
+    canEditEvaluation: true,
+    canDeleteEvaluation: true,
   },
   commune_chief: {
-    canWriteTransaction: true, // own commune
-    canReadTransactions: true, // own commune
-    canWriteBudget: true, // own commune
+    canWriteTransaction: true,
+    canReadTransactions: true,
+    canWriteBudget: true,
     canExportPdf: true,
     canManageUsers: false,
     canDownloadReceipt: true,
     canApproveTransaction: true,
     canSendToProvince: false,
     canManageSystem: false,
+    canViewEvaluation: true,
+    canCreateEvaluation: true,
+    canEditEvaluation: true,
+    canDeleteEvaluation: false,
   },
   commune_staff: {
-    canWriteTransaction: true, // own commune, draft only
-    canReadTransactions: true, // own commune only
+    canWriteTransaction: true,
+    canReadTransactions: true,
     canWriteBudget: false,
     canExportPdf: false,
     canManageUsers: false,
@@ -95,6 +115,10 @@ export const PERMISSIONS: Record<UserRole, Record<PermissionFlag, boolean>> = {
     canApproveTransaction: false,
     canSendToProvince: false,
     canManageSystem: false,
+    canViewEvaluation: true,
+    canCreateEvaluation: true,
+    canEditEvaluation: false,
+    canDeleteEvaluation: false,
   },
   finance_viewer: {
     canWriteTransaction: false,
@@ -106,6 +130,10 @@ export const PERMISSIONS: Record<UserRole, Record<PermissionFlag, boolean>> = {
     canApproveTransaction: false,
     canSendToProvince: false,
     canManageSystem: false,
+    canViewEvaluation: true,
+    canCreateEvaluation: false,
+    canEditEvaluation: false,
+    canDeleteEvaluation: false,
   },
 };
 

@@ -17,7 +17,7 @@ import {
   deleteUserProfile,
   defaultUserProfile,
   type UserProfile,
-} from "@/lib/user-profile-service";
+} from "@/features/users/user-profile-service";
 
 const MEMBERSHIP_STATUSES = [
   { value: "active", label: "សមាជិកសកម្ម" },

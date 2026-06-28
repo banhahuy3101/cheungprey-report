@@ -20,31 +20,37 @@ const DEFAULT_PERMS: Record<string, Record<string, boolean>> = {
     canWriteTransaction: true, canReadTransactions: true, canWriteBudget: true,
     canExportPdf: true, canManageUsers: true, canDownloadReceipt: true,
     canApproveTransaction: true, canSendToProvince: true, canManageSystem: true,
+    canViewEvaluation: true, canCreateEvaluation: true, canEditEvaluation: true, canDeleteEvaluation: true,
   },
   district_chief: {
     canWriteTransaction: true, canReadTransactions: true, canWriteBudget: true,
     canExportPdf: true, canManageUsers: true, canDownloadReceipt: true,
     canApproveTransaction: true, canSendToProvince: true, canManageSystem: false,
+    canViewEvaluation: true, canCreateEvaluation: true, canEditEvaluation: true, canDeleteEvaluation: true,
   },
   district_admin: {
     canWriteTransaction: true, canReadTransactions: true, canWriteBudget: true,
     canExportPdf: true, canManageUsers: true, canDownloadReceipt: true,
     canApproveTransaction: true, canSendToProvince: false, canManageSystem: false,
+    canViewEvaluation: true, canCreateEvaluation: true, canEditEvaluation: true, canDeleteEvaluation: true,
   },
   commune_chief: {
     canWriteTransaction: true, canReadTransactions: true, canWriteBudget: true,
     canExportPdf: true, canManageUsers: false, canDownloadReceipt: true,
     canApproveTransaction: true, canSendToProvince: false, canManageSystem: false,
+    canViewEvaluation: true, canCreateEvaluation: true, canEditEvaluation: true, canDeleteEvaluation: false,
   },
   commune_staff: {
     canWriteTransaction: true, canReadTransactions: true, canWriteBudget: false,
     canExportPdf: false, canManageUsers: false, canDownloadReceipt: true,
     canApproveTransaction: false, canSendToProvince: false, canManageSystem: false,
+    canViewEvaluation: true, canCreateEvaluation: true, canEditEvaluation: false, canDeleteEvaluation: false,
   },
   finance_viewer: {
     canWriteTransaction: false, canReadTransactions: true, canWriteBudget: false,
     canExportPdf: true, canManageUsers: false, canDownloadReceipt: false,
     canApproveTransaction: false, canSendToProvince: false, canManageSystem: false,
+    canViewEvaluation: true, canCreateEvaluation: false, canEditEvaluation: false, canDeleteEvaluation: false,
   },
 };
 

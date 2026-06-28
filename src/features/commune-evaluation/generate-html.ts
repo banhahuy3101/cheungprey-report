@@ -39,6 +39,9 @@ export function generateEvaluationHtml(record: Record<string, unknown>): string 
   const province = v("province");
   const district = v("district");
   const commune = v("commune");
+  const mandateNumber = v("mandateNumber");
+  const mandateYearStart = v("mandateYearStart");
+  const mandateYearEnd = v("mandateYearEnd");
 
   const s1rows = [
     row("ភាគរយចំនួនប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំ ទៅចុះឈ្មោះបោះឆ្នោតតំណាងរាស្ត្រ២០២៣", v("registeredVotersNational2023")),
@@ -261,7 +264,7 @@ export function generateEvaluationHtml(record: Record<string, unknown>): string 
 </head>
 <body>
 <h1>សម្រាប់រដ្ឋបាលឃុំ/សង្កាត់នីមួយៗ</h1>
-<h2>ខេត្ត: ${province} &nbsp;&nbsp; ស្រុក: ${district} &nbsp;&nbsp; ឃុំ: ${commune} &nbsp;&nbsp; អាណត្តិទី៥ (២០២២-២០២៧)</h2>
+<h2>ខេត្ត: ${province} &nbsp;&nbsp; ស្រុក: ${district} &nbsp;&nbsp; ឃុំ: ${commune} &nbsp;&nbsp; អាណត្តិទី${mandateNumber} (${mandateYearStart}-${mandateYearEnd})</h2>
 
 <div class="section-title">១. លទ្ធិប្រជាធិបតេយ្យ និងសិទ្ធិសេរីភាព</div>
 <table><thead><tr><th>លក្ខណៈវិនិច្ឆ័យ</th><th>តម្លៃ</th></tr></thead><tbody>${s1rows}</tbody></table>

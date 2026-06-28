@@ -2,9 +2,18 @@ interface HeaderProps {
   province?: string;
   district?: string;
   commune?: string;
+  mandateNumber?: string;
+  mandateYearStart?: string;
+  mandateYearEnd?: string;
 }
 
-export default function Header({ province, district, commune }: HeaderProps) {
+const khmerNum = (s: string): string =>
+  String(s).replace(/[0-9]/g, (d) => "០១២៣៤៥៦៧៨៩"[+d]);
+
+export default function Header({ province, district, commune, mandateNumber, mandateYearStart, mandateYearEnd }: HeaderProps) {
+  const num = khmerNum(mandateNumber || "៥");
+  const yStart = khmerNum(mandateYearStart || "២០២២");
+  const yEnd = khmerNum(mandateYearEnd || "២០២៧");
   return (
     <div className="text-center gap-2">
       <div className="font-moul text-xl">សម្រាប់រដ្ឋបាលឃុំ សង្កាត់នីមួយៗ</div>
@@ -12,7 +21,7 @@ export default function Header({ province, district, commune }: HeaderProps) {
         ទម្រង់ទិន្នន័យសម្រាប់ការវាយតម្លៃលទ្ធផលនៃការអនុវត្ត
       </div>
       <div className="font-moul text-lg">
-        គោលនយោបាយអភិវឌ្ឍន៍ឃុំ សង្កាត់អាណត្តិទី៥ (២០២២-២០២៧)
+        គោលនយោបាយអភិវឌ្ឍន៍ឃុំ សង្កាត់អាណត្តិទី{num} ({yStart}-{yEnd})
       </div>
       <div className="font-moul text-lg">
         រាជធានី/ខេត្ត {province ?? "........."} ក្រុង/ស្រុក/ខណ្ឌ{" "}

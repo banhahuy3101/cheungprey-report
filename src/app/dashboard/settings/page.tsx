@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Shield, Users, KeyRound, LayoutList, Server, BadgeCheck } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { useAuth, roleLabel } from "@/lib/supabase-auth";
+import { useAuth, roleLabel } from "@/features/auth/supabase-auth";
 import { ROLE_LEVEL } from "@/lib/types";
 import type { UserRole } from "@/lib/types";
 

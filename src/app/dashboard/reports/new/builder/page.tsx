@@ -4,7 +4,7 @@ import { Suspense, useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Save } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import ReportEditor from "@/components/ReportEditor";
+import ReportEditor from "@/features/reports/ReportEditor";
 import { getReport, updateReport } from "@/lib/data";
 
 function BuilderInner() {

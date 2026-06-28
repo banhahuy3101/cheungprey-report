@@ -2,8 +2,8 @@
 
 import { Input, Select, Textarea, Label } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import type { EvaluationData } from "@/lib/evaluation-schema";
-import { defaultEvaluationData } from "@/lib/evaluation-schema";
+import type { EvaluationData } from "@/features/commune-evaluation/schema";
+import { defaultEvaluationData } from "@/features/commune-evaluation/schema";
 import { fetchProvinces, fetchDistricts, fetchCommunes, type ProvinceItem, type DistrictItem, type CommuneItem } from "@/lib/province-data";
 import Autocomplete from "@/components/ui/Autocomplete";
 import { useEffect, useState, useRef, useImperativeHandle, forwardRef, useCallback } from "react";
@@ -273,11 +273,25 @@ export default forwardRef<EvaluationFormHandle, EvaluationFormProps>(function Ev
       <div className="space-y-6">
         {step === "general" && (
           <div className="rounded-xl border border-slate-200 bg-white p-5 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="text-center mb-6 space-y-1">
+              <div className="font-moul text-lg text-slate-800">សម្រាប់រដ្ឋបាលឃុំ សង្កាត់នីមួយៗ</div>
+              <div className="font-moul text-base text-slate-700">
+                ទម្រង់ទិន្នន័យសម្រាប់ការវាយតម្លៃលទ្ធផលនៃការអនុវត្ត
+              </div>
+              <div className="font-moul text-base text-blue-700">
+                គោលនយោបាយអភិវឌ្ឍន៍ឃុំ សង្កាត់អាណត្តិទី{form.mandateNumber} ({form.mandateYearStart}-{form.mandateYearEnd})
+              </div>
+            </div>
             <h2 className="text-lg font-semibold text-slate-900 mb-4">ព័ត៌មានទូទៅ</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <Autocomplete label="រាជធានី / ខេត្ត" value={form.province} onChange={updateProvince} options={provinces} />
               <Autocomplete label="ក្រុង / ស្រុក / ខណ្ឌ" value={form.district} onChange={updateDistrict} options={filteredDistricts} />
               <Autocomplete label="ឃុំ / សង្កាត់" value={form.commune} onChange={(v) => update("commune", v)} options={filteredCommunes} />
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mt-4 pt-4 border-t border-slate-100">
+              <TextField label="អាណត្តិទី" value={form.mandateNumber} onChange={(v) => update("mandateNumber", v)} type="number" />
+              <TextField label="ឆ្នាំចាប់ផ្តើម" value={form.mandateYearStart} onChange={(v) => update("mandateYearStart", v)} type="number" />
+              <TextField label="ឆ្នាំបញ្ចប់" value={form.mandateYearEnd} onChange={(v) => update("mandateYearEnd", v)} type="number" />
             </div>
           </div>
         )}

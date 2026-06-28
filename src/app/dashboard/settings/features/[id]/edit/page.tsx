@@ -4,8 +4,8 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Loader2, Check, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { useAuth } from "@/lib/supabase-auth";
-import { PERMISSION_LABELS } from "@/lib/permission-labels";
+import { useAuth } from "@/features/auth/supabase-auth";
+import { PERMISSION_LABELS } from "@/features/roles-permissions/permission-labels";
 import { type PermissionFlag, PERMISSIONS } from "@/lib/data";
 import type { UserRole } from "@/lib/types";
 

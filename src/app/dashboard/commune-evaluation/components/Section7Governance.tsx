@@ -1,4 +1,4 @@
-import type { EvaluationData } from "@/lib/evaluation-schema";
+import type { EvaluationData } from "@/features/commune-evaluation/schema";
 
 const khmerDigits: Record<string, string> = {
   "0": "០",

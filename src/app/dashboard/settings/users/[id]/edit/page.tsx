@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Loader2, Check, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { useAuth, roleLabel } from "@/lib/supabase-auth";
+import { useAuth, roleLabel } from "@/features/auth/supabase-auth";
 import type { UserRole } from "@/lib/types";
 
 const ALL_ROLES: UserRole[] = [
