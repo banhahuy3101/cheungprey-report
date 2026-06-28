@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Plus, Eye, Pencil, Trash2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { formatDate } from "@/lib/data";
 import { listEvaluations, deleteEvaluation } from "@/lib/evaluation-service";
 import type { CommuneEvaluationListItem } from "@/lib/evaluation-service";
 
@@ -80,7 +81,7 @@ export default function CommuneEvaluationPage() {
                       </td>
                       <td className="px-4 py-3 text-sm text-slate-700">{item.commune || ".........."}</td>
                       <td className="px-4 py-3 text-sm text-slate-500">
-                        {new Date(item.created_at).toLocaleDateString("km-KH")}
+                        {formatDate(item.created_at)}
                       </td>
                       <td className="px-4 py-3 text-right text-sm">
                         <div className="inline-flex items-center gap-2">

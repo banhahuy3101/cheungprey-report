@@ -26,8 +26,11 @@ const siemreap = Siemreap({
 });
 
 export const metadata: Metadata = {
-  title: "Enterprise Finance & Reporting",
-  description: "Finance management and modular report system",
+  title: "Cheung Prey Management System",
+  description: "Cheung Prey Management System",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +43,7 @@ export default function RootLayout({
       lang="km"
       className={`${geistSans.variable} ${geistMono.variable} ${moul.variable} ${siemreap.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
+      <body className="min-h-full flex flex-col">
         <SupabaseAuthProvider>{children}</SupabaseAuthProvider>
       </body>
     </html>

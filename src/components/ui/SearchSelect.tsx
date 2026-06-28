@@ -14,12 +14,14 @@ export function SearchSelect({
   onChange,
   placeholder,
   className = "",
+  onSearch,
 }: {
   options: SearchOption[];
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  onSearch?: (query: string) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -55,6 +57,7 @@ export function SearchSelect({
         onChange={(e) => {
           setQuery(e.target.value);
           setOpen(true);
+          onSearch?.(e.target.value);
           if (!e.target.value) onChange("");
         }}
         onFocus={() => {

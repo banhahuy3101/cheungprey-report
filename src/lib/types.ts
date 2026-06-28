@@ -85,6 +85,17 @@ export interface User {
   updatedBy?: string; // uid of admin who last modified
 }
 
+export interface Profile {
+  id: string;
+  name: string;
+  title: string;
+  phone?: string;
+  email?: string;
+  userId?: string;
+  createdAt: string;
+  updatedAt?: string;
+}
+
 // ============================================================
 // Report & Finance domain types
 // ============================================================

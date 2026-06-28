@@ -1,4 +1,5 @@
 import type { EvaluationData } from "@/lib/evaluation-schema";
+import { CheckSquare, Square, SquareCheck } from "lucide-react";
 
 const khmerDigits: Record<string, string> = {
   "0": "០", "1": "១", "2": "២", "3": "៣", "4": "៤",
@@ -21,7 +22,7 @@ export default function Section1Democracy({ data }: Section1Props) {
         <tr>
           <th className="border border-black w-20 p-1 text-center font-moul">ល.រ</th>
           <th className="border border-black p-1 font-moul">សូចនាករ</th>
-          <th className="border border-black w-[40%] p-1 font-moul">
+          <th className="border border-black w-[45%] p-1 font-moul">
             <div className="text-wrap font-moul text-xs">
               ទិន្នន័យ ឬព័ត៌មាន លទ្ធផលនៃការអនុវត្ត
             </div>
@@ -30,21 +31,21 @@ export default function Section1Democracy({ data }: Section1Props) {
       </thead>
       <tbody>
         <tr>
-          <td className="border border-black text-center p-3 font-siemreap">១</td>
-          <td className="border border-black p-3 font-siemreap" colSpan={2}>
+          <td className="border border-black text-center p-1 font-siemreap">១</td>
+          <td className="border border-black p-1 font-siemreap" colSpan={2}>
             ជាឃុំ សង្កាត់ដែលលើកកម្ពស់លទ្ធិប្រជាធិបតេយ្យនៅមូលដ្ឋាន និងសិទ្ធិសេរីភាពរបស់ប្រជាជនគ្រប់រូប ប្រជាជនរស់នៅដោយសុខដុមរមនា
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center p-3 font-siemreap">១.១</td>
-          <td className="border border-black p-3 font-siemreap" colSpan={2}>
+          <td className="border border-black text-center p-1 font-siemreap">១.១</td>
+          <td className="border border-black p-1 font-siemreap" colSpan={2}>
             ការលើកកម្ពស់លទ្ធិប្រជាធិបតេយ្យនៅមូលដ្ឋាន
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.១.២</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.១.២</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ភាគរយចំនួនប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំ ទៅចុះឈ្មោះបោះឆ្នោតតំណាងរាស្ត្រ</li>
               <li>២. ភាគរយចំនួនប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំ ទៅចុះឈ្មោះបោះឆ្នោតឃុំ សង្កាត់</li>
               <li>៣. ភាគរយនៃចំនួនប្រជាពលរដ្ឋមានឈ្មោះបោះឆ្នោតបានទៅបោះឆ្នោតតំណាងរាស្ត្រ</li>
@@ -53,8 +54,8 @@ export default function Section1Democracy({ data }: Section1Props) {
               <li>៦. ករណីអំពើហិង្សាពាក់ព័ន្ធនឹងការបោះឆ្នោតឃុំ សង្កាត់២០២២</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1 text-wrap">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.registeredVotersNational2023)}% ប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំ ទៅចុះឈ្មោះបោះឆ្នោតតំណាងរាស្ត្រ២០២៣</li>
               <li>២. ចំនួន {toKhmerNum(data.registeredVotersCommune2022)}% ប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំ ទៅចុះឈ្មោះបោះឆ្នោតឃុំ សង្កាត់២០២២</li>
               <li>៣. ចំនួន {toKhmerNum(data.voterTurnoutNational2023)}% ប្រជាពលរដ្ឋមានឈ្មោះបោះឆ្នោតបានទៅបោះឆ្នោតតំណាងរាស្ត្រ២០២៣</li>
@@ -65,15 +66,17 @@ export default function Section1Democracy({ data }: Section1Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.១.៣</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.១.៣</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានសញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ បរិញ្ញាបត្ររង បរិញ្ញាបត្រ បរិញ្ញាបត្រជាន់ខ្ពស់</li>
+              <br />
+              <br />
               <li>២. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់ដែលត្រូវដកចេញពីមុខតំណែងដោយសារ ឬ ទទួលទណ្ឌកម្មវិន័យពាក់ព័ន្ធអាប្បកិរិយា មិនស្អាតស្អំ ការមិនគោរពច្បាប់ ការរើសអើង</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១.១. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានសញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ {toKhmerNum(data.highSchoolDiploma)} នាក់</li>
               <li>១.២. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានបរិញ្ញាបត្ររង {toKhmerNum(data.associateDegree)} នាក់</li>
               <li>១.៣. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានបរិញ្ញាបត្រ {toKhmerNum(data.bachelorDegree)} នាក់</li>
@@ -83,14 +86,14 @@ export default function Section1Democracy({ data }: Section1Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.១.៤</td>
-          <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black text-center p-1 font-siemreap">១.១.៤</td>
+          <td className="p-1 border border-black font-siemreap align-top">
+            <ol className="space-y-1 ">
               <li>១. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់មានសញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ បរិញ្ញាបត្ររង បរិញ្ញាបត្រ បរិញ្ញាបត្រជាន់ខ្ពស់</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១.១. ចំនួនសរុបនៃសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់ {toKhmerNum(data.totalCouncilMembers)}</li>
               <li>១.២. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់ជាស្រ្តី {toKhmerNum(data.femaleCouncilMembers)}</li>
               <li>១.៣. ចំនួនសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់ជាយុវជន (ក្រោម៣៥ឆ្នាំ) {toKhmerNum(data.youthCouncilMembers)}</li>
@@ -103,45 +106,46 @@ export default function Section1Democracy({ data }: Section1Props) {
             </ol>
           </td>
         </tr>
-        <tr>
-          <td className="border border-black text-center p-3 font-siemreap">១.២</td>
-          <td className="border border-black p-3 font-siemreap" colSpan={2}>
+        <tr data-pb="true">
+          <td className="border border-black text-center p-1 font-siemreap">១.២</td>
+          <td className="border border-black p-1 font-siemreap" colSpan={2}>
             ការលើកកម្ពស់សិទ្ធិសេរីភាពរបស់ប្រជាពលរដ្ឋ
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.២.១</td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black text-center p-1 font-siemreap">១.២.១</td>
+          <td className="border border-black p-1 font-siemreap">
             ករណីរំលោភសិទ្ធិ ជំនឿសាសនា សិទ្ធិមនុស្សពាក់ព័ន្ធនឹងការប្រកាន់ពូជសាសន៍ ពណ៌សម្បុរ ភេទ ភាសា និន្នាការនយោបាយ អតីតកាល ដើមកំណើតជាតិ ឋានៈសង្គម ធនធាន ឬស្ថានភាពផ្សេងទៀត
           </td>
-          <td className="border border-black p-3 font-siemreap text-justify">
+          <td className="border border-black p-1 font-siemreap text-justify">
             ចំនួនករណីរំលោភសិទ្ធិមនុស្សពាក់ព័ន្ធនឹងការប្រកាន់ពូជសាសន៍ ពណ៌សម្បុរ ភេទ ភាសា ជំនឿ សាសនា និន្នាការនយោបាយ អតីតកាល ដើមកំណើតជាតិ ឋានៈសង្គម ធនធាន ឬ ស្ថានភាពផ្សេងទៀត {toKhmerNum(data.humanRightsViolations)}
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.២.២</td>
-          <td className="border border-black p-3 font-siemreap">
-            ចំនួនប្រជាពលរដ្ឋ ដែលបានចូលរួមវេទិកាសាធារណៈរបស់ឃុំ សង្កាត់
+          <td className="border border-black text-center p-1 font-siemreap">១.២.២</td>
+          <td className="border border-black p-1 font-siemreap">
+            ៣. ចំនួនប្រជាពលរដ្ឋ ដែលបានចូលរួមវេទិកាសាធារណៈរបស់ឃុំ សង្កាត់
           </td>
-          <td className="border border-black p-3 font-siemreap text-justify">
+          <td className="border border-black p-1 font-siemreap text-justify">
             ចំនួនប្រជាពលរដ្ឋដែលបានចូលរួមវេទិកាសាធារណៈរបស់ឃុំ សង្កាត់ {toKhmerNum(data.publicForumParticipants)} នាក់
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.២.៣</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.២.៣</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួនប្រជាពលរដ្ឋ ដែលបានចូលរួមកិច្ចប្រជុំក្រុមប្រឹក្សាឃុំ សង្កាត់</li>
               <li>២. ចំនួនប្រជាពលរដ្ឋចូលរួម ក្នុងដំណើរការរៀបចំផែនការអភិវឌ្ឍ និងកម្មវិធីវិនិយោគ ៣ឆ្នាំរំកិលរបស់ឃុំ សង្កាត់</li>
               <li>៣. ឃុំ សង្កាត់ដែលបានបង្កើតគណៈកម្មការគ្រប់គ្រងគម្រោងដែលមានការចូលរួមពីប្រជាពលរដ្ឋ (មាន ឬមិនមាន)</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.councilMeetingParticipants)} នាក់</li>
               <li>២. ចំនួន {toKhmerNum(data.planningProcessParticipants)} នាក់</li>
+              <br />
               <li>៣. 
-                <label className="pl-5 inline-flex items-center gap-1 mr-4 cursor-not-allowed">
+                <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
                   {data.hasProjectManagementCommittee === "មាន" ? "☑" : "☐"}
                   មាន
                 </label>
@@ -154,80 +158,80 @@ export default function Section1Democracy({ data }: Section1Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.២.៤</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.២.៤</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួនប្រជាពលរដ្ឋដែលបានទទួលសេវារដ្ឋបាល ឃុំ សង្កាត់</li>
               <li>២. ចំនួនគម្រោង (សេវាសង្គម និងហេដ្ឋារចនាសម្ព័ន្ធ) បានរៀបចំដោយឃុំ សង្កាត់</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.administrativeServiceRecipients)} នាក់</li>
               <li>២. ចំនួន {toKhmerNum(data.communityProjectsCount)} គម្រោង</li>
             </ol>
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.២.៥</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.២.៥</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. សំណើ សំណូមពរ ក្តីកង្វល់ និងបញ្ហាប្រឈមនានារបស់ប្រជាពលរដ្ឋពាក់ព័ន្ធនឹងការផ្តល់សេវា</li>
               <li>២. ការសម្របសម្រួលដោះស្រាយសំណើ សំណូមពរ ក្តីកង្វល់ និងបញ្ហាប្រឈមនានា</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.serviceRequestCases)} ករណី</li>
               <li>២. ចំនួន {toKhmerNum(data.serviceResolvedCases)} ករណី</li>
             </ol>
           </td>
         </tr>
-        <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.៣</td>
-          <td colSpan={2} className="border border-black p-3 font-siemreap">
+        <tr data-pb="true">
+          <td className="border border-black text-center p-1 font-siemreap">១.៣</td>
+          <td colSpan={2} className="border border-black p-1 font-siemreap">
             ភាពសុខដុមរមនាក្នុងសង្គម
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.៣.១</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.៣.១</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
-              <li>១. វិវាទពាក់ព័ន្ធនឹងជំនឿ ប្រពៃណី និងសាសនាផ្សេងៗគ្នានៅមូលដ្ឋាន</li>
+            <ol className="p-1 space-y-1 text-wrap">
+              <li>វិវាទពាក់ព័ន្ធនឹងជំនឿ ប្រពៃណី និងសាសនាផ្សេងៗគ្នានៅមូលដ្ឋាន</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
-              <li>១. ចំនួន {toKhmerNum(data.religiousDisputeCases)} ករណី</li>
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
+              <li>ចំនួន {toKhmerNum(data.religiousDisputeCases)} ករណី</li>
             </ol>
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.៣.២</td>
+          <td className="border border-black text-center p-1 font-siemreap">១.៣.២</td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ករណីវិវាទរវាងប្រជាពលរដ្ឋនិងប្រជាពលរដ្ឋពាក់ព័ន្ធនឹងនិន្នាការនយោបាយ</li>
             </ol>
           </td>
-          <td className="border border-black font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.politicalDisputeCases)} ករណី</li>
             </ol>
           </td>
         </tr>
         <tr>
-          <td className="border border-black text-center align-top p-3 font-siemreap">១.៣.៣</td>
-          <td className="border border-black font-siemreap p-3">
+          <td className="border border-black text-center p-1 font-siemreap">១.៣.៣</td>
+          <td className="border border-black font-siemreap p-1">
             ឃុំ សង្កាត់ដែលមានមណ្ឌល ទីធ្លាសាធារណៈ ឬអគារវប្បធម៌ក្នុងសហគមន៍ដែលសាធារណជនអាចមានការជួបជុំ ការសម្តែង និងការចែករំលែកនូវសិល្បៈ ប្រពៃណី ទំនៀមទម្លាប់ សាសនា និងចំណេះដឹងផ្សេងៗ
           </td>
-          <td className="border border-black pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasCommunityCulturalSpace === "មាន" ? "☑" : "☐"}
               មាន
             </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-              {data.hasCommunityCulturalSpace === "គ្មាន" ? "☑" : "☐"}
-              គ្មាន
+              {data.hasCommunityCulturalSpace === "មិនមាន" ? "☑" : "☐"}
+              មិនមាន
             </label>
           </td>
         </tr>

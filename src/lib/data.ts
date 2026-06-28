@@ -12,6 +12,7 @@ import type {
   CommuneMonthlyReport,
   FinanceSummary,
   Notification,
+  Profile,
   Report,
   ReportPartKey,
   Transaction,
@@ -495,6 +496,44 @@ export function getCommune(id: string): Commune | undefined {
   return store.communes.find((c) => c.id === id);
 }
 
+// ---- Profiles -----------------------------------------------------------
+
+export function listProfiles(): Profile[] {
+  return store.profiles;
+}
+
+export function createProfile(input: Omit<Profile, "id" | "createdAt" | "updatedAt">): Profile {
+  const profile: Profile = {
+    ...input,
+    id: uuidv4(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  store.profiles.push(profile);
+  return profile;
+}
+
+export function updateProfile(id: string, patch: Partial<Omit<Profile, "id">>): Profile | undefined {
+  const idx = store.profiles.findIndex((p) => p.id === id);
+  if (idx === -1) return undefined;
+  store.profiles[idx] = {
+    ...store.profiles[idx],
+    ...patch,
+    updatedAt: new Date().toISOString(),
+  };
+  return store.profiles[idx];
+}
+
+export function deleteProfile(id: string): boolean {
+  const before = store.profiles.length;
+  store.profiles = store.profiles.filter((p) => p.id !== id);
+  return store.profiles.length < before;
+}
+
+export function getProfile(id: string): Profile | undefined {
+  return store.profiles.find((p) => p.id === id);
+}
+
 // ---- Aggregations -------------------------------------------------------
 
 export function getFinanceSummary(): FinanceSummary {
@@ -623,13 +662,23 @@ export function formatCurrency(n: number, currency: "KHR" | "USD" = "KHR"): stri
   return currency === "USD" ? formatUSD(n) : formatKHR(n);
 }
 
+const KHMER_DIGITS = ["០", "១", "២", "៣", "៤", "៥", "៦", "៧", "៨", "៩"];
+const KHMER_MONTHS = ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"];
+
+function toKhmerNum(n: number): string {
+  return String(n).replace(/\d/g, (d) => KHMER_DIGITS[+d]);
+}
+
 export function formatDate(iso: string): string {
   const d = new Date(iso);
-  return d.toLocaleDateString("km-KH", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
+  return formatDateObj(d);
+}
+
+export function formatDateObj(d: Date): string {
+  const day = toKhmerNum(d.getDate());
+  const month = KHMER_MONTHS[d.getMonth()];
+  const year = toKhmerNum(d.getFullYear());
+  return `${day} ${month} ${year}`;
 }
 
 export function reportPartsForKeys(keys: ReportPartKey[]): string[] {

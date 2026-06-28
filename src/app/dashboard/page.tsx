@@ -101,7 +101,7 @@ const khrFormatter = (v: unknown): string => {
 };
 
 export default function DashboardPage() {
-  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  const isComing = process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_IS_COMING === "true";
   if (isComing) return <ComingSoon />;
 
   const [summary, setSummary] = useState<FinanceSummary | null>(null);

@@ -25,88 +25,104 @@ interface Section7Props {
 export default function Section7Governance({ data }: Section7Props) {
   return (
     <table className="w-full border-collapse border border-black border-t-0">
-
-      <tbody><tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap">
+      <tbody>
+        <tr>
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#B4C6E7]">
             ៧
           </td>
-          <td className="border border-black border-t-0 p-3 font-siemreap" colSpan={2}>
+          <td
+            className="border border-black border-t-0 p-1 font-siemreap bg-[#B4C6E7]"
+            colSpan={2}
+          >
             ជាឃុំ សង្កាត់ដែលមានស្វ័យភាព សិទ្ធិអំណាច មុខងារ ធនធាន
             និងការទទួលខុសត្រូវច្បាស់លាស់
           </td>
-        </tr><tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap">
+        </tr>
+        <tr>
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
             ៧.១
           </td>
-          <td className="border border-black border-t-0 p-3 font-siemreap" colSpan={2}>
+          <td
+            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            colSpan={2}
+          >
             ស្វ័យភាព និងសិទ្ធិអំណាចរបស់ក្រុមប្រឹក្សាឃុំ សង្កាត់
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.១.២
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ចំនួនសំណើរសំណូមពរ និងកង្វល់នានារបស់ប្រជាពលរដ្ឋដែលក្រុមប្រឹក្សាឃុំ
             សង្កាត់ ពុំអាចដោះស្រាយបានជម្រុញមក រដ្ឋបាលក្រុង ស្រុក ខណ្ឌ
             រដ្ឋបាលរាជធានី ខេត្ត និង ក្រសួង ស្ថាប័នថ្នាក់ជាតិ ដើម្បីដោះស្រាយ
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             ចំនួន {toKhmerNum(data.citizenRequestsEscalated)} ករណី
           </td>
-        </tr><tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap">
+        </tr>
+        <tr data-pb="true">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
             ៧.២
           </td>
-          <td className="border border-black border-t-0 p-3 font-siemreap" colSpan={2}>
+          <td
+            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            colSpan={2}
+          >
             មុខងារ និងការទទួលខុសត្រូវ
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៣
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ក្រុមប្រឹក្សាឃុំ សង្កាត់បានចូលរួមក្នុងគណៈគ្រប់គ្រងសាលារៀន
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasCouncilInSchoolManagement === "មាន" ? "☑" : "☐"}
               មាន
             </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasCouncilInSchoolManagement === "មិនមាន" ? "☑" : "☐"}មិនមាន
-          </label>
+              {data.hasCouncilInSchoolManagement === "មិនមាន" ? "☑" : "☐"}មិនមាន
+            </label>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៤
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ចំនួនមត្តេយ្យសហគមន៍ក្នុងឃុំ សង្កាត់នីមួយៗ
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             ចំនួន {toKhmerNum(data.communityPreschoolsCount)} សាលាមត្តេយ្យសហគមន៍
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៥
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ឃុំ សង្កាត់ដែលបានគ្រប់គ្រងសហគមន៍តំបន់ការពារធម្មជាតិ
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasManagedProtectedArea === "មាន" ? "☑" : "☐"}មាន
-          </label>
+              {data.hasManagedProtectedArea === "មាន" ? "☑" : "☐"}មាន
+            </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasManagedProtectedArea === "មិនមាន" ? "☑" : "☐"}មិនមាន
-          </label>
+              {data.hasManagedProtectedArea === "មិនមាន" ? "☑" : "☐"}មិនមាន
+            </label>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៦
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ចំនួនគម្រោងរបស់ឃុំ
                 សង្កាត់ដែលបានបញ្ចូលភាពធន់នឹងការប្រែប្រួលអាកាសធាតុទៅក្នុងប្រព័ន្ធគ្រប់គ្រងការងារ
@@ -119,268 +135,295 @@ export default function Section7Governance({ data }: Section7Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>ចំនួន {toKhmerNum(data.climateResilienceProjects)} គម្រោង</li>
               <li>
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasClimateChangeAwareness === "បាន" ? "☑" : "☐"}បាន
-          </label>
+                  {data.hasClimateChangeAwareness === "បាន" ? "☑" : "☐"}បាន
+                </label>
                 <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasClimateChangeAwareness === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+                  {data.hasClimateChangeAwareness === "មិនបាន" ? "☑" : "☐"}
+                  មិនបាន
+                </label>
               </li>
             </ol>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៧
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ឃុំ សង្កាត់បានចូលរួមក្នុងគណៈកម្មការគ្រប់គ្រង
             ឬការគ្រប់គ្រងមណ្ឌលសុខភាព
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasCouncilInHealthManagement === "បាន" ? "☑" : "☐"}បាន
-          </label>
+              {data.hasCouncilInHealthManagement === "បាន" ? "☑" : "☐"}បាន
+            </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasCouncilInHealthManagement === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+              {data.hasCouncilInHealthManagement === "មិនបាន" ? "☑" : "☐"}មិនបាន
+            </label>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៨
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ឃុំ សង្កាត់បានអនុវត្តមុខងារ
             និងការទទួលខុសត្រូវលើការងារកិច្ចការពារកុមារ
-            និងគ្រប់គ្រងសេវាថែទាំកុមារ ដែលមានពិការភាព គ្មានទីពឹង
+            និងគ្រប់គ្រងសេវាថែទាំកុមារ ដែលមានពិការភាព មិនមានទីពឹង
             និងក្រុមកុមារងាយរងគ្រោះ និង ងាយរងគ្រោះផ្សេងៗទៀតនៅក្នុងសហគមន៍
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasChildProtectionServices === "បាន" ? "☑" : "☐"}បាន
-          </label>
+              {data.hasChildProtectionServices === "បាន" ? "☑" : "☐"}បាន
+            </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasChildProtectionServices === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+              {data.hasChildProtectionServices === "មិនបាន" ? "☑" : "☐"}មិនបាន
+            </label>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.៩
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ឃុំ សង្កាត់ដែលបានចូលរួមគ្រប់គ្រងសំរាម សំណល់រឹង និងបញ្ហា
                 បរិស្ថានផ្សេងៗទៀតក្នុងមូលដ្ឋានរបស់ខ្លួន
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
-              <li>
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
+              <li>១.
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasWasteManagement === "បាន" ? "☑" : "☐"}បាន
-          </label>
+                  {data.hasWasteManagement === "បាន" ? "☑" : "☐"}បាន
+                </label>
                 <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasWasteManagement === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+                  {data.hasWasteManagement === "មិនបាន" ? "☑" : "☐"}មិនបាន
+                </label>
               </li>
               <li>
-                បើបាន ដូចជា៖
+                ២. បើបាន ដូចជា៖
                 <div className="whitespace-pre-line min-h-[3rem]">
                   {toKhmerNum(data.wasteManagementDetails)}
                 </div>
               </li>
             </ol>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.១១
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ឃុំ សង្កាត់បានបង្កើត និងគ្រប់គ្រងផ្សារសហគមន៍នានា
             ដើម្បីបង្កលក្ខណៈងាយស្រួល ក្នុងការទិញលក់ទំនិញ និងផលិតផលនៅតាមមូលដ្ឋាន
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasManagedCommunityMarket === "បាន" ? "☑" : "☐"}បាន
-          </label>
+              {data.hasManagedCommunityMarket === "បាន" ? "☑" : "☐"}បាន
+            </label>
             <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasManagedCommunityMarket === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+              {data.hasManagedCommunityMarket === "មិនបាន" ? "☑" : "☐"}មិនបាន
+            </label>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.១២
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             ចំនួនប្រជាពលរដ្ឋ ដែលជួបប្រទះនឹងបញ្ហាប្រឈមនានាពាក់ព័ន្ធគ្រោះមហន្តរាយ
             និងជំងឺឆ្លងរាតត្បាតនានាដែលជួយដោះស្រាយដោយឃុំ សង្កាត់
           </td>
-          <td className="border border-black w-[40%] pl-5 pr-4 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
             ចំនួន {toKhmerNum(data.disasterAffectedCitizens)} នាក់
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.១៣
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
-                ឃុំ សង្កាត់ដែលបានរៀបចំ
+                ១. ឃុំ សង្កាត់ដែលបានរៀបចំ
                 និងអនុវត្តគម្រោង/សកម្មភាពផ្គត់ផ្គង់ទឹកស្អាត និងអនាម័យ នៅក្នុងឃុំ
                 សង្កាត់
               </li>
-              <li>ចំនួនគម្រោងផ្គត់ផ្គង់ទឹកស្អាត</li>
-              <li>ចំនួនគម្រោងកសាងបង្គន់អនាម័យ</li>
+              <li>២. ចំនួនគម្រោងផ្គត់ផ្គង់ទឹកស្អាត</li>
+              <li>៣. ចំនួនគម្រោងកសាងបង្គន់អនាម័យ</li>
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
-              <li>
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
+              <li>១. 
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasCleanWaterSanitation === "បាន" ? "☑" : "☐"}បាន
-          </label>
+                  {data.hasCleanWaterSanitation === "បាន" ? "☑" : "☐"}បាន
+                </label>
                 <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasCleanWaterSanitation === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+                  {data.hasCleanWaterSanitation === "មិនបាន" ? "☑" : "☐"}មិនបាន
+                </label>
               </li>
+              <br />
               <li>
-                ចំនួនគម្រោងផ្គត់ផ្គង់ទឹកស្អាតក្នុងឃុំ សង្កាត់{" "}
+                ២. ចំនួនគម្រោងផ្គត់ផ្គង់ទឹកស្អាតក្នុងឃុំ សង្កាត់{" "}
                 {toKhmerNum(data.cleanWaterProjects)} គម្រោង
               </li>
               <li>
-                ចំនួនគម្រោងកសាងបង្គន់អនាម័យក្នុងឃុំ សង្កាត់{" "}
+                ៣. ចំនួនគម្រោងកសាងបង្គន់អនាម័យក្នុងឃុំ សង្កាត់{" "}
                 {toKhmerNum(data.toiletConstructionProjects)} គម្រោង
               </li>
             </ol>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.១៤
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ឃុំ សង្កាត់ដែលបានរៀបចំ និងអនុវត្តគម្រោង/សកម្មភាព
                 លើកកម្ពស់សមភាពយេនឌ័រ និងការទប់ស្កាត់អំពើហិង្សាក្នុងគ្រួសារ
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
-              <li>
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
+              <li>១. 
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasGenderEqualityProjects === "បាន" ? "☑" : "☐"}បាន
-          </label>
+                  {data.hasGenderEqualityProjects === "បាន" ? "☑" : "☐"}បាន
+                </label>
                 <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasGenderEqualityProjects === "មិនបាន" ? "☑" : "☐"}មិនបាន
-          </label>
+                  {data.hasGenderEqualityProjects === "មិនបាន" ? "☑" : "☐"}
+                  មិនបាន
+                </label>
               </li>
-              <li>
-                បើបាន ចំនួន {toKhmerNum(data.genderEqualityProjectsCount)} គម្រោង
+              <li>២. 
+                បើបាន ចំនួន {toKhmerNum(data.genderEqualityProjectsCount)}{" "}
+                គម្រោង
               </li>
             </ol>
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.២.១៥
           </td>
-          <td className="border border-black p-3 font-siemreap">
+          <td className="border border-black p-1 font-siemreap">
             មុខងារចាំបាច់ផ្សេងៗទៀត ដែលឃុំ
             សង្កាត់បានអនុវត្តដើម្បីឆ្លើយតបទៅនឹងតម្រូវការចាំបាច់របស់ប្រជាពលរដ្ឋនៅមូលដ្ឋាន
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap pr-4 text-justify align-top">
             រួមមាន៖
             <div className="whitespace-pre-line min-h-[3rem]">
               {toKhmerNum(data.otherEssentialFunctions)}
             </div>
           </td>
-        </tr><tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap">
+        </tr>
+        <tr data-pb="true">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
             ៧.៣
           </td>
-          <td className="border border-black border-t-0 p-3 font-siemreap" colSpan={2}>
+          <td
+            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            colSpan={2}
+          >
             ធនធានហិរញ្ញវត្ថុ
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.៣.៤
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
-                ឃុំ
+                ១. ឃុំ
                 សង្កាត់បានកៀរគរជំនួយឧបត្ថម្ភពីដៃគូអភិវឌ្ឍន៍នានាទាំងក្នុងប្រទេស
                 ទាំងក្រៅប្រទេស និងពីសប្បុរសជន ដើម្បីអភិវឌ្ឍន៍ ឃុំ សង្កាត់
               </li>
-              <li>ចំនួនថវិកាឃុំ សង្កាត់កៀរគរបាន</li>
+              <li>២. ចំនួនថវិកាឃុំ សង្កាត់កៀរគរបាន</li>
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
-    {data.hasMobilizedDevelopmentSupport === "មាន" ? "☑" : "☐"}មាន
-          </label>
+                  ១. {data.hasMobilizedDevelopmentSupport === "មាន" ? "☑" : "☐"}មាន
+                </label>
                 <label className="inline-flex items-center gap-1 cursor-not-allowed">
-    {data.hasMobilizedDevelopmentSupport === "មិនមាន" ? "☑" : "☐"}មិនមាន
-          </label>
+                  {data.hasMobilizedDevelopmentSupport === "មិនមាន" ? "☑" : "☐"}
+                  មិនមាន
+                </label>
               </li>
               <li>
-                ចំនួនថវិកាឃុំ សង្កាត់កៀរគរបាន{" "}
+                ២. ចំនួនថវិកាឃុំ សង្កាត់កៀរគរបាន{" "}
                 {toKhmerNum(data.mobilizedBudgetAmount)} រៀល
               </li>
             </ol>
           </td>
-        </tr><tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap">
+        </tr>
+        <tr data-pb="true">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
             ៧.៤
           </td>
-          <td className="border border-black border-t-0 p-3 font-siemreap" colSpan={2}>
+          <td
+            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            colSpan={2}
+          >
             ធនធានមនុស្ស
           </td>
-        </tr><tr>
+        </tr>
+        <tr>
           <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
             ៧.៤.៤
           </td>
           <td className="border border-black font-siemreap">
-            <ol className="pl-5 space-y-1">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
-                អាកប្បកិរិយាថ្លៃថ្នូរ ស្អាតស្អំ គោរពច្បាប់ មិនរើសអើង
+                ១. អាកប្បកិរិយាថ្លៃថ្នូរ ស្អាតស្អំ គោរពច្បាប់ មិនរើសអើង
                 មានការគោរពស្រឡាញ់ និងជឿជាក់ពីប្រជាជន
               </li>
               <li>
-                ចំនួនថ្នាក់ដឹកនាំភូមិដែលរងការបណ្ដឹង
+                ២. ចំនួនថ្នាក់ដឹកនាំភូមិដែលរងការបណ្ដឹង
                 និងទទួលទណ្ឌកម្មវិន័យផ្នែករដ្ឋបាល និង ច្បាប់
               </li>
+              <br />
+              <br />
+              <br />
             </ol>
           </td>
-          <td className="border border-black w-[40%] font-siemreap pr-4 text-justify align-top">
-            <ol className="pl-5 space-y-1">
+          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+            <ol className="p-1 space-y-1 text-wrap">
               <li>
-                ថ្នាក់ដឹកនាំភូមិដែលមានបរិញ្ញាបត្រឡើង{" "}
+                ១. ថ្នាក់ដឹកនាំភូមិដែលមានបរិញ្ញាបត្រឡើង{" "}
                 {toKhmerNum(data.villageLeadersWithBachelor)} នាក់
               </li>
               <li>
-                ថ្នាក់ដឹកនាំភូមិដែលមានបរិញ្ញាបត្ររង{" "}
+                ២. ថ្នាក់ដឹកនាំភូមិដែលមានបរិញ្ញាបត្ររង{" "}
                 {toKhmerNum(data.villageLeadersWithAssociate)} នាក់
               </li>
               <li>
-                ថ្នាក់ដឹកនាំភូមិដែលមានមធ្យមសិក្សាទុតិយភូមិ{" "}
+                ៣. ថ្នាក់ដឹកនាំភូមិដែលមានមធ្យមសិក្សាទុតិយភូមិ{" "}
                 {toKhmerNum(data.villageLeadersWithHighSchool)} នាក់
               </li>
               <li>
-                ចំនួនថ្នាក់ដឹកនាំភូមិដែលរងការបណ្ដឹង
+                ៤. ចំនួនថ្នាក់ដឹកនាំភូមិដែលរងការបណ្ដឹង
                 និងទទួលទណ្ឌកម្មវិន័យផ្នែករដ្ឋបាល និង ច្បាប់{" "}
                 {toKhmerNum(data.villageLeadersDisciplined)} នាក់
               </li>
             </ol>
           </td>
-        </tr></tbody>
+        </tr>
+      </tbody>
     </table>
   );
 }

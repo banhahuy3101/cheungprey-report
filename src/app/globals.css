@@ -13,6 +13,11 @@
   --font-siemreap: var(--font-siemreap);
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
 @media print {
   @page { size: A4; margin: 20mm; }
 }

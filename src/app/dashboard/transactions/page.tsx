@@ -40,7 +40,7 @@ const TYPE_LABELS: Record<TransactionType, string> = {
 };
 
 export default function TransactionsPage() {
-  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  const isComing = process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_IS_COMING === "true";
   if (isComing) return <ComingSoon />;
 
   const [items, setItems] = useState<Transaction[]>(() => listTransactions());

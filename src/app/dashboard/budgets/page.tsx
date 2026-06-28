@@ -18,7 +18,7 @@ const CATEGORY_LABELS: Record<Category, string> = { operation: "ប្រតិ�
 export default function BudgetsPage() {
   const { can } = useAuth();
 
-  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  const isComing = process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_IS_COMING === "true";
 
   if (isComing) return <ComingSoon />;
 

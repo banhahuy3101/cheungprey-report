@@ -6,10 +6,10 @@ export function generatePDF(data: CommuneEvaluation, communeName: string) {
   const toKhmer = (v: string) => v.split("|")[1] || v;
   const toValue = (v: string) => {
     if (v === "yes") return "បាន/មាន";
-    if (v === "no") return "ទេ/គ្មាន";
+    if (v === "no") return "ទេ/មិនមាន";
     if (v === "sufficient") return "គ្រប់គ្រាន់";
     if (v === "insufficient") return "មិនគ្រប់គ្រាន់";
-    if (v === "none") return "គ្មាន";
+    if (v === "none") return "មិនមាន";
     return v || "-";
   };
 
@@ -81,7 +81,7 @@ export function generatePDF(data: CommuneEvaluation, communeName: string) {
     ["ផ្លាកសញ្ញាចរាចរណ៍", toValue(data.trafficSignsStatus)],
     ["កែសម្រួលសុវត្ថិភាពចរាចរណ៍", toValue(data.trafficSafetyAdjustment)],
     ["ទីសាធារណៈមានសណ្តាប់ធ្នាប់", toValue(data.orderlyPublicPlaces)],
-    ["ទីសាធារណៈគ្មានសណ្តាប់ធ្នាប់", toValue(data.disorderlyPublicPlaces)],
+    ["ទីសាធារណៈមិនមានសណ្តាប់ធ្នាប់", toValue(data.disorderlyPublicPlaces)],
     ["ចំណតរថយន្តសាធារណៈ", toValue(data.hasPublicParking)],
   ]);
 

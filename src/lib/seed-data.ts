@@ -5,6 +5,7 @@ import type {
   CommuneMonthlyReport,
   DistrictMonthlyReport,
   Notification,
+  Profile,
   Report,
   Transaction,
   User,
@@ -79,6 +80,7 @@ const sampleCommunes: CommuneData[] = [{ id: "commune_001", nameKh: "ឃុំ�
 
 type Store = {
   users: User[];
+  profiles: Profile[];
   transactions: Transaction[];
   budgets: Budget[];
   reports: Report[];
@@ -96,6 +98,7 @@ const globalForStore = globalThis as unknown as { __financeStore?: Store };
 function buildStore(): Store {
   return {
     users: [...sampleUsers],
+    profiles: [],
     transactions: [...sampleTransactions],
     budgets: [...sampleBudgets],
     reports: [...sampleReports],

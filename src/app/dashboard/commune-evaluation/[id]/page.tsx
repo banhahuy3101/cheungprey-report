@@ -2,12 +2,23 @@
 
 import { useEffect, useState, use } from "react";
 import Link from "next/link";
-import { ArrowLeft, Printer, Pencil } from "lucide-react";
+import { ArrowLeft, Pencil } from "lucide-react";
+import { formatDate } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
-import { defaultEvaluationData, type EvaluationData } from "@/lib/evaluation-schema";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/Card";
+import {
+  defaultEvaluationData,
+  type EvaluationData,
+} from "@/lib/evaluation-schema";
 import { getEvaluation } from "@/lib/evaluation-service";
 import type { CommuneEvaluationRecord } from "@/lib/evaluation-service";
+import DownloadPdfButton from "@/components/DownloadPdfButton";
 import Header from "../components/Header";
 import Section1Democracy from "../components/Section1Democracy";
 import Section2Security from "../components/Section2Security";
@@ -16,8 +27,13 @@ import Section4Economy from "../components/Section4Economy";
 import Section5SocialProtection from "../components/Section5SocialProtection";
 import Section6Democracy from "../components/Section6Democracy";
 import Section7Governance from "../components/Section7Governance";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 
-export default function EvaluationDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default function EvaluationDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = use(params);
   const [record, setRecord] = useState<CommuneEvaluationRecord | null>(null);
   const [loading, setLoading] = useState(true);
@@ -42,14 +58,13 @@ export default function EvaluationDetailPage({ params }: { params: Promise<{ id:
           </Link>
           <div>
             <p className="text-sm text-slate-500">វាយតម្លៃឃុំ / សង្កាត់</p>
-            <h1 className="text-2xl font-semibold text-slate-900">មើលព័ត៌មានវាយតម្លៃ</h1>
+            <h1 className="text-2xl font-semibold text-slate-900">
+              មើលព័ត៌មានវាយតម្លៃ
+            </h1>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" className="inline-flex items-center gap-2" onClick={() => window.print()}>
-            <Printer size={16} />
-            បោះពុម្ព
-          </Button>
+          <DownloadPdfButton id={id} />
           <Link href={`/dashboard/commune-evaluation/${id}/edit`}>
             <Button className="inline-flex items-center gap-2">
               <Pencil size={16} />
@@ -62,7 +77,9 @@ export default function EvaluationDetailPage({ params }: { params: Promise<{ id:
       <Card className="print:hidden">
         <CardHeader>
           <CardTitle>ព័ត៌មានទូទៅ</CardTitle>
-          <CardDescription>ខេត្ត / ក្រុង / ស្រុក / ខណ្ឌ និងឃុំ / សង្កាត់</CardDescription>
+          <CardDescription>
+            ខេត្ត / ក្រុង / ស្រុក / ខណ្ឌ និងឃុំ / សង្កាត់
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -89,7 +106,9 @@ export default function EvaluationDetailPage({ params }: { params: Promise<{ id:
               </div>
               <div>
                 <p className="text-sm text-slate-500">កាលបរិច្ឆេទបង្កើត</p>
-                <p className="font-medium text-slate-900">{new Date(record.created_at).toLocaleDateString("km-KH")}</p>
+                <p className="font-medium text-slate-900">
+                  {formatDate(record.created_at)}
+                </p>
               </div>
             </div>
           )}
@@ -99,18 +118,31 @@ export default function EvaluationDetailPage({ params }: { params: Promise<{ id:
       <Card className="print:shadow-none">
         <CardHeader className="print:hidden">
           <CardTitle>តារាងវាយតម្លៃ</CardTitle>
-          <CardDescription>របៀបរៀបរយ សណ្តាប់ធ្នាប់សាធារណៈ និងសុវត្ថិភាពសង្គម</CardDescription>
+          <CardDescription>
+            របៀបរៀបរយ សណ្តាប់ធ្នាប់សាធារណៈ និងសុវត្ថិភាពសង្គម
+          </CardDescription>
         </CardHeader>
-        <CardContent className="overflow-x-auto p-0 sm:p-6">
-          <Header province={data.province} district={data.district} commune={data.commune} />
-          <Section1Democracy data={data} />
-          <Section2Security data={data} />
-          <Section3Services data={data} />
-          <Section4Economy data={data} />
-          <Section5SocialProtection data={data} />
-          <Section6Democracy data={data} />
-          <Section7Governance data={data} />
-        </CardContent>
+        <Document>
+          <Page size="A4">
+            <CardContent
+              id="evaluation-content"
+              className="overflow-x-auto p-0 sm:p-6"
+            >
+              <Header
+                province={data.province}
+                district={data.district}
+                commune={data.commune}
+              />
+              <Section1Democracy data={data} />
+              <Section2Security data={data} />
+              <Section3Services data={data} />
+              <Section4Economy data={data} />
+              <Section5SocialProtection data={data} />
+              <Section6Democracy data={data} />
+              <Section7Governance data={data} />
+            </CardContent>
+          </Page>
+        </Document>
       </Card>
     </div>
   );

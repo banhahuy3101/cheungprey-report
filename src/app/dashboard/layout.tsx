@@ -11,7 +11,9 @@ import {
   History,
   LogOut,
   ClipboardCheck,
+  UserCheck,
 } from "lucide-react";
+import { formatDateObj } from "@/lib/data";
 import { useAuth, roleLabel } from "@/lib/supabase-auth";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
@@ -54,6 +56,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       icon: <Users size={18} />,
       requirePermission: "canManageUsers",
     },
+    { href: "/dashboard/profiles", label: "បញ្ជីសមាជិក", icon: <UserCheck size={18} /> },
     { href: "/dashboard/audit", label: "កំណត់ត្រាសកម្មភាព", icon: <History size={18} /> },
   ];
 
@@ -65,8 +68,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <Link href="/dashboard" className="flex items-center gap-2">
             <FileText className="text-blue-600" size={22} />
             <div>
-              <div className="font-bold text-sm text-slate-900">Finance & Report</div>
-              <div className="text-[11px] text-slate-500">Enterprise System</div>
+              <div className="font-bold text-sm text-slate-900">Cheung Prey</div>
+              <div className="text-[11px] text-slate-500">Management System</div>
             </div>
           </Link>
         </div>
@@ -122,7 +125,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             {navItems.find((n) => n.href === pathname)?.label ?? "ផ្ទាំងគ្រប់គ្រង"}
           </h1>
           <div className="text-sm text-slate-500">
-            ថ្ងៃទី {new Date().toLocaleDateString("km-KH")}
+            ថ្ងៃទី {formatDateObj(new Date())}
           </div>
         </header>
         <main className="flex-1 p-6">{children}</main>

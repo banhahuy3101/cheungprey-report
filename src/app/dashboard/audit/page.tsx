@@ -31,7 +31,7 @@ const ACTION_VARIANT: Record<string, "success" | "danger" | "info" | "warning" |
 };
 
 export default function AuditPage() {
-  const isComing = process.env.NEXT_PUBLIC_IS_COMING === "true";
+  const isComing = process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_IS_COMING === "true";
   if (isComing) return <ComingSoon />;
 
   const [logs, setLogs] = useState<AuditLog[]>(() => listAuditLogs());
@@ -63,7 +63,7 @@ export default function AuditPage() {
                 </TR>
               ))}
               {logs.length === 0 && (
-                <TR><TD colSpan={5} className="text-center text-slate-500 py-8">គ្មានកំណត់ត្រា</TD></TR>
+                <TR><TD colSpan={5} className="text-center text-slate-500 py-8">មិនមានកំណត់ត្រា</TD></TR>
               )}
             </TBody>
           </Table>
