@@ -17,6 +17,7 @@ type ProfileRow = {
   email: string;
   name: string;
   role: UserRole;
+  roles?: string[];
   district_id: string;
   commune_id: string | null;
   created_at: string;
@@ -30,6 +31,7 @@ function profileToUser(p: ProfileRow): User {
     name: p.name,
     displayName: p.name,
     role: p.role,
+    roles: (p.roles && p.roles.length > 0 ? p.roles : [p.role]) as UserRole[],
     districtId: p.district_id,
     communeId: p.commune_id,
     status: "active",

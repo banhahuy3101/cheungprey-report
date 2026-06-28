@@ -14,13 +14,34 @@ export async function GET() {
   const user = await getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { data, error } = await serviceClient
+  const { data: profiles, error } = await serviceClient
     .from("profiles")
     .select("*")
     .order("created_at", { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+
+  // Attach roles from user_roles table
+  const userIds = profiles.map((p) => p.id);
+  const { data: userRoles } = await serviceClient
+    .from("user_roles")
+    .select("user_id, role")
+    .in("user_id", userIds);
+
+  const rolesByUser: Record<string, string[]> = {};
+  if (userRoles) {
+    for (const r of userRoles) {
+      if (!rolesByUser[r.user_id]) rolesByUser[r.user_id] = [];
+      rolesByUser[r.user_id].push(r.role);
+    }
+  }
+
+  const enriched = profiles.map((p) => ({
+    ...p,
+    roles: rolesByUser[p.id] || [],
+  }));
+
+  return NextResponse.json(enriched);
 }
 
 export async function POST(request: Request) {

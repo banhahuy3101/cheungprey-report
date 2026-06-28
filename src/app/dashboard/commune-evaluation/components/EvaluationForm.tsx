@@ -7,7 +7,7 @@ import { defaultEvaluationData } from "@/lib/evaluation-schema";
 import { fetchProvinces, fetchDistricts, fetchCommunes, type ProvinceItem, type DistrictItem, type CommuneItem } from "@/lib/province-data";
 import Autocomplete from "@/components/ui/Autocomplete";
 import { useEffect, useState, useRef, useImperativeHandle, forwardRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check, Plus, Trash2 } from "lucide-react";
 
 interface EvaluationFormProps {
   initialData?: Partial<EvaluationData>;
@@ -285,18 +285,72 @@ export default forwardRef<EvaluationFormHandle, EvaluationFormProps>(function Ev
         {step === "s1" && (
           <div className="rounded-xl border border-slate-200 bg-white p-5 animate-in fade-in slide-in-from-right-4 duration-300">
             <h2 className="text-lg font-semibold text-slate-900 mb-4">១. លទ្ធិប្រជាធិបតេយ្យ និងសិទ្ធិសេរីភាព</h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <TextField label="ភាគរយចុះឈ្មោះបោះឆ្នោតតំណាងរាស្ត្រ ២០២៣" value={form.registeredVotersNational2023} onChange={(v) => update("registeredVotersNational2023", v)} />
-              <TextField label="ភាគរយចុះឈ្មោះបោះឆ្នោតឃុំសង្កាត់ ២០២២" value={form.registeredVotersCommune2022} onChange={(v) => update("registeredVotersCommune2022", v)} />
-              <TextField label="ភាគរយទៅបោះឆ្នោតតំណាងរាស្ត្រ ២០២៣" value={form.voterTurnoutNational2023} onChange={(v) => update("voterTurnoutNational2023", v)} />
-              <TextField label="ភាគរយទៅបោះឆ្នោតឃុំសង្កាត់ ២០២២" value={form.voterTurnoutCommune2022} onChange={(v) => update("voterTurnoutCommune2022", v)} />
-              <TextField label="ករណីហិង្សាបោះឆ្នោតតំណាងរាស្ត្រ ២០២៣" value={form.violenceCasesNational2023} onChange={(v) => update("violenceCasesNational2023", v)} />
-              <TextField label="ករណីហិង្សាបោះឆ្នោតឃុំសង្កាត់ ២០២២" value={form.violenceCasesCommune2022} onChange={(v) => update("violenceCasesCommune2022", v)} />
+
+            <h3 className="text-base font-semibold text-slate-800 mb-3 mt-2 border-b border-slate-200 pb-1">១.១.២ ការចុះឈ្មោះបោះឆ្នោត និងការបោះឆ្នោត</h3>
+            <div className="space-y-3 mb-6">
+              {(form.voterRecords ?? []).map((rec, i) => (
+                <div key={i} className="border border-slate-200 rounded-lg p-3 bg-slate-50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-slate-700">ជម្រើស {i + 1}</span>
+                    <button type="button" onClick={() => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next.splice(i, 1);
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} className="text-red-500 hover:text-red-700">
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-5">
+                    <SelectField label="ឆ្នាំ" value={rec.year} onChange={(v) => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next[i] = { ...next[i], year: v };
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} options={["2023","2022","2021","2020","2019","2018","2017","2016","2015"].map((y) => ({ value: y, label: y }))} />
+                    <SelectField label="ប្រភេទ" value={rec.electionType} onChange={(v) => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next[i] = { ...next[i], electionType: v as "national" | "commune" };
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} options={[
+                      { value: "national", label: "តំណាងរាស្ត្រ" },
+                      { value: "commune", label: "ឃុំសង្កាត់" },
+                    ]} />
+                    <TextField label="ភាគរយចុះឈ្មោះ" value={rec.registeredVoters} onChange={(v) => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next[i] = { ...next[i], registeredVoters: v };
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} />
+                    <TextField label="ភាគរយទៅបោះឆ្នោត" value={rec.voterTurnout} onChange={(v) => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next[i] = { ...next[i], voterTurnout: v };
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} />
+                    <TextField label="ករណីហិង្សា" value={rec.violenceCases} onChange={(v) => {
+                      const next = [...(form.voterRecords ?? [])];
+                      next[i] = { ...next[i], violenceCases: v };
+                      setForm((prev) => ({ ...prev, voterRecords: next }));
+                    }} />
+                  </div>
+                </div>
+              ))}
+              <button type="button" onClick={() => setForm((prev) => ({
+                ...prev,
+                voterRecords: [...(prev.voterRecords ?? []), { year: "2023", electionType: "national" as const, registeredVoters: "", voterTurnout: "", violenceCases: "" }],
+              }))} className="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800">
+                <Plus size={16} /> បន្ថែមជម្រើស
+              </button>
+            </div>
+
+            <h3 className="text-base font-semibold text-slate-800 mb-3 mt-2 border-b border-slate-200 pb-1">១.១.៣ កម្រិតសមត្ថភាពរបស់ក្រុមប្រឹក្សាឃុំ សង្កាត់</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mb-6">
               <TextField label="សមាជិកក្រុមប្រឹក្សាមានសញ្ញាបត្រទុតិយភូមិ" value={form.highSchoolDiploma} onChange={(v) => update("highSchoolDiploma", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្ររង" value={form.associateDegree} onChange={(v) => update("associateDegree", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្រ" value={form.bachelorDegree} onChange={(v) => update("bachelorDegree", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្រជាន់ខ្ពស់" value={form.masterDegree} onChange={(v) => update("masterDegree", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាត្រូវដកចេញ" value={form.removedCouncilMembers} onChange={(v) => update("removedCouncilMembers", v)} />
+            </div>
+
+            <h3 className="text-base font-semibold text-slate-800 mb-3 mt-2 border-b border-slate-200 pb-1">១.១.៤ សមាជិកក្រុមប្រឹក្សា ស្មៀន និងថ្នាក់ដឹកនាំភូមិ</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mb-6">
               <TextField label="ចំនួនសមាជិកក្រុមប្រឹក្សាសរុប" value={form.totalCouncilMembers} onChange={(v) => update("totalCouncilMembers", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាជាស្ត្រី" value={form.femaleCouncilMembers} onChange={(v) => update("femaleCouncilMembers", v)} />
               <TextField label="សមាជិកក្រុមប្រឹក្សាជាយុវជន" value={form.youthCouncilMembers} onChange={(v) => update("youthCouncilMembers", v)} />
@@ -306,6 +360,10 @@ export default forwardRef<EvaluationFormHandle, EvaluationFormProps>(function Ev
               <TextField label="ថ្នាក់ដឹកនាំភូមិសរុប" value={form.totalVillageLeaders} onChange={(v) => update("totalVillageLeaders", v)} />
               <TextField label="ថ្នាក់ដឹកនាំភូមិជាស្ត្រី" value={form.femaleVillageLeaders} onChange={(v) => update("femaleVillageLeaders", v)} />
               <TextField label="ថ្នាក់ដឹកនាំភូមិជាយុវជន" value={form.youthVillageLeaders} onChange={(v) => update("youthVillageLeaders", v)} />
+            </div>
+
+            <h3 className="text-base font-semibold text-slate-800 mb-3 mt-2 border-b border-slate-200 pb-1">១.២ ការលើកកម្ពស់សិទ្ធិសេរីភាពរបស់ប្រជាពលរដ្ឋ</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mb-6">
               <TextField label="ករណីរំលោភសិទ្ធិមនុស្ស" value={form.humanRightsViolations} onChange={(v) => update("humanRightsViolations", v)} />
               <TextField label="ប្រជាពលរដ្ឋចូលរួមវេទិកាសាធារណៈ" value={form.publicForumParticipants} onChange={(v) => update("publicForumParticipants", v)} />
               <TextField label="ប្រជាពលរដ្ឋចូលរួមប្រជុំក្រុមប្រឹក្សា" value={form.councilMeetingParticipants} onChange={(v) => update("councilMeetingParticipants", v)} />
@@ -315,6 +373,10 @@ export default forwardRef<EvaluationFormHandle, EvaluationFormProps>(function Ev
               <TextField label="ចំនួនគម្រោងសហគមន៍" value={form.communityProjectsCount} onChange={(v) => update("communityProjectsCount", v)} />
               <TextField label="សំណើសេវា" value={form.serviceRequestCases} onChange={(v) => update("serviceRequestCases", v)} />
               <TextField label="សំណើដែលបានដោះស្រាយ" value={form.serviceResolvedCases} onChange={(v) => update("serviceResolvedCases", v)} />
+            </div>
+
+            <h3 className="text-base font-semibold text-slate-800 mb-3 mt-2 border-b border-slate-200 pb-1">១.៣ ភាពសុខដុមរមនាក្នុងសង្គម</h3>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               <TextField label="វិវាទសាសនា/ប្រពៃណី" value={form.religiousDisputeCases} onChange={(v) => update("religiousDisputeCases", v)} />
               <TextField label="វិវាទនយោបាយ" value={form.politicalDisputeCases} onChange={(v) => update("politicalDisputeCases", v)} />
               <SelectField label="មានមណ្ឌល/ទីធ្លាវប្បធម៌សហគមន៍" value={form.hasCommunityCulturalSpace} onChange={(v) => update("hasCommunityCulturalSpace", v)} options={yesNoOptions} />

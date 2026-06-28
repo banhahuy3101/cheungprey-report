@@ -31,8 +31,14 @@ export const ROLE_LEVEL: Record<UserRole, number> = {
   super_admin: 100,
 };
 
-/** Roles for a commune (assigned by district admins/chiefs/super). */
-export const COMMUNE_ROLES: UserRole[] = ["commune_chief", "commune_staff", "finance_viewer"];
+  /** Roles for a commune (assigned by district admins/chiefs/super). */
+  export const COMMUNE_ROLES: UserRole[] = ["commune_chief", "commune_staff", "finance_viewer"];
+
+  /** All role keys as an array. */
+  export const ALL_ROLES: UserRole[] = [
+    "super_admin", "district_chief", "district_admin",
+    "commune_chief", "commune_staff", "finance_viewer",
+  ];
 
 /** Roles for district-level administration. */
 export const DISTRICT_ROLES: UserRole[] = [
@@ -76,6 +82,7 @@ export interface User {
   displayName: string;
   name: string; // alias of displayName for legacy code
   role: UserRole;
+  roles: UserRole[]; // all roles assigned to this user (multi-role)
   districtId: string;
   communeId?: string | null; // required when role is commune_*
   permissions?: ExtraPermission[];

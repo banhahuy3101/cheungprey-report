@@ -88,7 +88,7 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
 }) {
   const [userSearchQuery, setUserSearchQuery] = useState("");
   const [showCreate, setShowCreate] = useState(false);
-  const [newUser, setNewUser] = useState({ email: "", password: "", role: "commune_chief" });
+  const [newUser, setNewUser] = useState({ name: "", email: "", password: "", role: "commune_chief" });
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
 
@@ -104,7 +104,7 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
       const res = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...newUser, name: userSearchQuery }),
+        body: JSON.stringify(newUser),
       });
       if (!res.ok) {
         const err = await res.json();
@@ -152,30 +152,26 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
         <SearchSelect
           options={userList.map((u) => ({ value: u.id, label: `${u.name} (${u.email})` }))}
           value={form.user_id ?? ""}
-          onChange={(val) => update("user_id", val || null)}
+          onChange={(val) => {
+            if (val === "__create__") {
+              setNewUser((p) => ({
+                ...p,
+                name: userSearchQuery || p.name,
+                email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userSearchQuery) ? userSearchQuery : p.email,
+              }));
+              setShowCreate(true);
+            } else {
+              update("user_id", val || null);
+            }
+          }}
           placeholder="ជ្រើសរើសអ្នកប្រើ..."
           onSearch={setUserSearchQuery}
+          createOption={!form.user_id ? { value: "__create__", label: userSearchQuery.length > 6 ? `+ បង្កើត "${userSearchQuery}"` : "+ បង្កើតអ្នកប្រើថ្មី" } : null}
         />
-        {!form.user_id && !showCreate && (
-          <button
-            type="button"
-            onClick={() => {
-              if (userSearchQuery && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userSearchQuery)) {
-                setNewUser((p) => ({ ...p, email: userSearchQuery }));
-              }
-              setShowCreate(true);
-            }}
-            className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
-          >
-            <Plus size={14} />
-            {userSearchQuery.length > 6
-              ? <>បង្កើតអ្នកប្រើ <span className="font-mono">`{userSearchQuery}`</span></>
-              : <>បង្កើតអ្នកប្រើថ្មី</>}
-          </button>
-        )}
         {showCreate && (
           <div className="mt-2 rounded-xl border border-blue-100 bg-blue-50 p-3 space-y-2">
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
+              <div><Label className="text-xs">ឈ្មោះ</Label><Input value={newUser.name} onChange={(e) => setNewUser((p) => ({ ...p, name: e.target.value }))} /></div>
               <div><Label className="text-xs">អ៊ីមែល</Label><Input type="email" value={newUser.email} onChange={(e) => setNewUser((p) => ({ ...p, email: e.target.value }))} /></div>
               <div><Label className="text-xs">ពាក្យសម្ងាត់</Label><Input type="password" value={newUser.password} onChange={(e) => setNewUser((p) => ({ ...p, password: e.target.value }))} /></div>
             </div>

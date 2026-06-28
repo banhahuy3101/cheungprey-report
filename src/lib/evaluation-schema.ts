@@ -1,9 +1,26 @@
 import { z } from "zod";
 
+export interface VoterRecord {
+  year: string;
+  electionType: "national" | "commune";
+  registeredVoters: string;
+  voterTurnout: string;
+  violenceCases: string;
+}
+
+export const voterRecordSchema = z.object({
+  year: z.string(),
+  electionType: z.enum(["national", "commune"]),
+  registeredVoters: z.string().optional().default(""),
+  voterTurnout: z.string().optional().default(""),
+  violenceCases: z.string().optional().default(""),
+});
+
 export const evaluationSchema = z.object({
   province: z.string().min(1, "សូមបំពេញរាជធានី / ខេត្ត"),
   district: z.string().min(1, "សូមបំពេញក្រុង / ស្រុក / ខណ្ឌ"),
   commune: z.string().min(1, "សូមបំពេញឃុំ / សង្កាត់"),
+  voterRecords: z.array(voterRecordSchema).optional().default([]),
   registeredVotersNational2023: z.string().optional().default(""),
   registeredVotersCommune2022: z.string().optional().default(""),
   voterTurnoutNational2023: z.string().optional().default(""),
@@ -196,6 +213,7 @@ export const defaultEvaluationData: EvaluationData = {
   province: "",
   district: "",
   commune: "",
+  voterRecords: [],
   registeredVotersNational2023: "",
   registeredVotersCommune2022: "",
   voterTurnoutNational2023: "",

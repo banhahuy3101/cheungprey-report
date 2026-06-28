@@ -15,6 +15,7 @@ export function SearchSelect({
   placeholder,
   className = "",
   onSearch,
+  createOption,
 }: {
   options: SearchOption[];
   value: string;
@@ -22,6 +23,7 @@ export function SearchSelect({
   placeholder?: string;
   className?: string;
   onSearch?: (query: string) => void;
+  createOption?: SearchOption | null;
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -82,7 +84,7 @@ export function SearchSelect({
           <X size={14} />
         </button>
       )}
-      {open && filtered.length > 0 && (
+      {open && (filtered.length > 0 || createOption) && (
         <div className="absolute z-50 mt-1 w-full max-h-48 overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
           {filtered.map((opt) => (
             <button
@@ -101,6 +103,23 @@ export function SearchSelect({
               {opt.label}
             </button>
           ))}
+          {createOption && (
+            <>
+              {filtered.length > 0 && <div className="border-t border-slate-200" />}
+              <button
+                type="button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  onChange(createOption.value);
+                  setOpen(false);
+                  setQuery("");
+                }}
+                className="w-full text-left px-3 py-2 text-sm text-blue-600 hover:bg-blue-50 font-medium flex items-center gap-1.5"
+              >
+                {createOption.label}
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>

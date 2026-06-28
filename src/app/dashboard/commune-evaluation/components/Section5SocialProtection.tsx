@@ -27,11 +27,11 @@ export default function Section5SocialProtection({ data }: Section5Props) {
     <table className="w-full border-collapse border border-black border-t-0">
       <tbody>
         <tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#B4C6E7]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#B4C6E7]">
             ៥
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#B4C6E7]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#B4C6E7]"
             colSpan={2}
           >
             ជាឃុំ សង្កាត់ដែលលើកកម្ពស់ការគាំពារសង្គម លើកកម្ពស់ស្ថានភាពរបស់ស្ត្រី
@@ -40,25 +40,25 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៥.២
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ការលើកកម្ពស់ស្ថានភាពរបស់ស្ត្រី យុវជន និងកុមារ
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.២.៦
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ឃុំ សង្កាត់បានអនុវត្តសកម្មភាព និងផ្តល់សេវាថែទាំកុមារដែលមានពិការភាព
             មិនមានទីពឹង និងក្រុមកុមារងាយរងគ្រោះផ្សេងៗទៀត
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasDisabledChildCareServices === "បាន" ? "☑" : "☐"}បាន
             </label>
@@ -68,21 +68,21 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៥.៣
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ការគាំពារជនជាតិដើមភាគតិច
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.៣.២
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ឃុំ
@@ -92,7 +92,7 @@ export default function Section5SocialProtection({ data }: Section5Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ឃុំ
@@ -116,10 +116,10 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.៣.៤
           </td>
-          <td className="border border-black font-siemreap p-1">
+          <td className="border border-black font-siemreap text-xs p-1">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១.
@@ -132,7 +132,7 @@ export default function Section5SocialProtection({ data }: Section5Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top p-1">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top p-1">
             <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.minorityCandidates2022)} នាក់</li>
               <br />
@@ -144,21 +144,21 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៥.៤
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ការគាំពារជនពិការ និងជនចាស់ជរា
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs">
             ៥.៤.១
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ឃុំ សង្កាត់ដែលបានបង្កើតមូលនិធិសម្រាប់គាំទ្រជនមានពិការភាព
@@ -170,7 +170,7 @@ export default function Section5SocialProtection({ data }: Section5Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១.
@@ -200,10 +200,10 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.៤.៤
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១.
@@ -216,7 +216,7 @@ export default function Section5SocialProtection({ data }: Section5Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>១. ចំនួន {toKhmerNum(data.disabledCandidates2022)} នាក់</li>
               <li>
@@ -227,44 +227,44 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៥.៥
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ការគាំពារជនក្រីក្រ
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top ">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top ">
             ៥.៥.២
           </td>
-          <td className="border border-black font-siemreap p-1">
+          <td className="border border-black font-siemreap text-xs p-1">
             ចំនួនគ្រួសារក្រីក្រដែលជួបការលំបាក (ជនអនាថា ផ្ទុកមេរោគអេដស៍/ជំងឺអេដស៍
             និងកុមារ និងចាស់ជរា) ដែលទទួលបានជំនួយសង្គ្រោះបន្ទាប់ន់
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             ចំនួន {toKhmerNum(data.poorHouseholdsReliefCount)} គ្រួសារ
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៥.៦
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ការលើកកម្ពស់សមធម៌សង្គម
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.៦.១
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ឃុំ
@@ -279,7 +279,7 @@ export default function Section5SocialProtection({ data }: Section5Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១.
@@ -301,17 +301,17 @@ export default function Section5SocialProtection({ data }: Section5Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៥.៦.២
           </td>
-          <td className="border border-black font-siemreap p-1">
+          <td className="border border-black font-siemreap text-xs p-1">
             តើក្នុងឃុំ សង្កាត់មានក្នុងផែនការ
             និងកម្មវិធីបញ្ជ្រាបយេនឌ័រសម្រាប់ប្រជាជនជាជនបង្គោល ស្ត្រី យុវជន កុមារ
             ជនមានពិការភាព ជនចាស់ជរា និងជនជាតិដើមភាគតិច
             ក្នុងការទទួលព័ត៌មានសាធារណៈនានា ការវិភាគយេនឌ័រ
             និងការផ្សព្វផ្សាយផ្សេងៗ ?
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top p-1">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top p-1">
             រួមមាន
             <div className="whitespace-pre-line min-h-[3rem">
               {toKhmerNum(data.genderMainstreamingPlanDetails)}

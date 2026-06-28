@@ -12,6 +12,8 @@ import {
   LogOut,
   ClipboardCheck,
   UserCheck,
+  Settings,
+  KeyRound,
 } from "lucide-react";
 import { formatDateObj } from "@/lib/data";
 import { useAuth, roleLabel } from "@/lib/supabase-auth";
@@ -24,7 +26,8 @@ type PermissionKey =
   | "canWriteBudget"
   | "canExportPdf"
   | "canManageUsers"
-  | "canDownloadReceipt";
+  | "canDownloadReceipt"
+  | "canManageSystem";
 
 interface NavItem {
   href: string;
@@ -58,6 +61,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     },
     { href: "/dashboard/profiles", label: "បញ្ជីសមាជិក", icon: <UserCheck size={18} /> },
     { href: "/dashboard/audit", label: "កំណត់ត្រាសកម្មភាព", icon: <History size={18} /> },
+    {
+      href: "/dashboard/settings",
+      label: "ការកំណត់",
+      icon: <Settings size={18} />,
+      requirePermission: "canManageSystem",
+    },
   ];
 
   return (

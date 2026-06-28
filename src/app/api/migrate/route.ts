@@ -7,6 +7,17 @@ export async function GET() {
   );
 
   const sql = `
+-- Create exec_sql function if not exists
+create or replace function public.exec_sql(query text)
+returns void
+language plpgsql
+security definer
+as $$
+begin
+  execute query;
+end;
+$$;
+
 create table if not exists public.user_profiles (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references public.profiles(id) on delete cascade,
@@ -62,6 +73,103 @@ drop trigger if exists user_profiles_updated_at on public.user_profiles;
 create trigger user_profiles_updated_at
   before update on public.user_profiles
   for each row execute function public.set_updated_at();
+
+create table if not exists public.role_permissions (
+  role text primary key,
+  permissions jsonb not null default '{}',
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+alter table public.role_permissions enable row level security;
+
+do $$ begin
+  create policy "Allow all" on public.role_permissions
+    for all to authenticated, anon using (true) with check (true);
+exception when duplicate_object then null;
+end $$;
+
+drop trigger if exists role_permissions_updated_at on public.role_permissions;
+create trigger role_permissions_updated_at
+  before update on public.role_permissions
+  for each row execute function public.set_updated_at();
+
+create table if not exists public.roles (
+  key text primary key,
+  label_kh text not null default '',
+  label_en text not null default '',
+  level integer not null default 0,
+  description text not null default '',
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+alter table public.roles enable row level security;
+
+do $$ begin
+  create policy "Allow all" on public.roles
+    for all to authenticated, anon using (true) with check (true);
+exception when duplicate_object then null;
+end $$;
+
+drop trigger if exists roles_updated_at on public.roles;
+create trigger roles_updated_at
+  before update on public.roles
+  for each row execute function public.set_updated_at();
+
+insert into public.roles (key, label_kh, label_en, level, description)
+values
+  ('super_admin', 'Super Admin', 'Super Admin', 100, 'សិទ្ធិពេញលេញ គ្រប់គ្រងប្រព័ន្ធទាំងមូល'),
+  ('district_chief', 'ប្រធានបក្សស្រុក', 'District Chief', 80, 'ប្រធានបក្សស្រុក អនុម័តប្រតិបត្តិការ និងគ្រប់គ្រងឃុំ'),
+  ('district_admin', 'មន្ត្រីរដ្ឋបាលស្រុក', 'District Admin', 60, 'មន្ត្រីរដ្ឋបាលស្រុក គ្រប់គ្រងប្រតិបត្តិការប្រចាំថ្ងៃ'),
+  ('commune_chief', 'ប្រធានបក្សឃុំ', 'Commune Chief', 40, 'ប្រធានបក្សឃុំ គ្រប់គ្រងប្រតិបត្តិការឃុំ'),
+  ('commune_staff', 'សមាជិកបក្សឃុំ', 'Commune Staff', 20, 'សមាជិកបក្សឃុំ ធ្វើប្រតិបត្តិការឃុំ'),
+  ('finance_viewer', 'Finance Viewer', 'Finance Viewer', 10, 'មើលទិន្នន័យហិរញ្ញវត្ថុបានតែអាន')
+on conflict (key) do nothing;
+
+-- UDF: check_permission
+create or replace function public.check_permission(role text, permission text)
+returns boolean
+language sql
+stable
+as $$
+  select coalesce(
+    (select (rp.permissions ->> permission)::boolean
+     from public.role_permissions rp
+     where rp.role = check_permission.role),
+    false
+  );
+$$;
+
+-- UDF: user_has_permission
+create or replace function public.user_has_permission(user_id uuid, permission text)
+returns boolean
+language sql
+stable
+as $$
+  select coalesce(
+    (select (rp.permissions ->> permission)::boolean
+     from public.role_permissions rp
+     join public.profiles p on p.role = rp.role
+     where p.id = user_id),
+    false
+  );
+$$;
+
+-- UDF: get_user_permissions
+create or replace function public.get_user_permissions(user_id uuid)
+returns jsonb
+language sql
+stable
+as $$
+  select coalesce(
+    (select rp.permissions
+     from public.role_permissions rp
+     join public.profiles p on p.role = rp.role
+     where p.id = user_id),
+    '{}'::jsonb
+  );
+$$;
 `;
 
   const { error } = await supabase.rpc("exec_sql", { query: sql });

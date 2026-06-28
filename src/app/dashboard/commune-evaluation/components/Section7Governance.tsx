@@ -27,11 +27,11 @@ export default function Section7Governance({ data }: Section7Props) {
     <table className="w-full border-collapse border border-black border-t-0">
       <tbody>
         <tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#B4C6E7]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#B4C6E7]">
             ៧
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#B4C6E7]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#B4C6E7]"
             colSpan={2}
           >
             ជាឃុំ សង្កាត់ដែលមានស្វ័យភាព សិទ្ធិអំណាច មុខងារ ធនធាន
@@ -39,48 +39,48 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៧.១
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ស្វ័យភាព និងសិទ្ធិអំណាចរបស់ក្រុមប្រឹក្សាឃុំ សង្កាត់
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.១.២
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ចំនួនសំណើរសំណូមពរ និងកង្វល់នានារបស់ប្រជាពលរដ្ឋដែលក្រុមប្រឹក្សាឃុំ
             សង្កាត់ ពុំអាចដោះស្រាយបានជម្រុញមក រដ្ឋបាលក្រុង ស្រុក ខណ្ឌ
             រដ្ឋបាលរាជធានី ខេត្ត និង ក្រសួង ស្ថាប័នថ្នាក់ជាតិ ដើម្បីដោះស្រាយ
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             ចំនួន {toKhmerNum(data.citizenRequestsEscalated)} ករណី
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៧.២
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             មុខងារ និងការទទួលខុសត្រូវ
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៣
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ក្រុមប្រឹក្សាឃុំ សង្កាត់បានចូលរួមក្នុងគណៈគ្រប់គ្រងសាលារៀន
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasCouncilInSchoolManagement === "មាន" ? "☑" : "☐"}
               មាន
@@ -91,24 +91,24 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៤
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ចំនួនមត្តេយ្យសហគមន៍ក្នុងឃុំ សង្កាត់នីមួយៗ
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             ចំនួន {toKhmerNum(data.communityPreschoolsCount)} សាលាមត្តេយ្យសហគមន៍
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៥
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ឃុំ សង្កាត់ដែលបានគ្រប់គ្រងសហគមន៍តំបន់ការពារធម្មជាតិ
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasManagedProtectedArea === "មាន" ? "☑" : "☐"}មាន
             </label>
@@ -118,10 +118,10 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៦
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ចំនួនគម្រោងរបស់ឃុំ
@@ -135,7 +135,7 @@ export default function Section7Governance({ data }: Section7Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>ចំនួន {toKhmerNum(data.climateResilienceProjects)} គម្រោង</li>
               <li>
@@ -151,14 +151,14 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៧
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ឃុំ សង្កាត់បានចូលរួមក្នុងគណៈកម្មការគ្រប់គ្រង
             ឬការគ្រប់គ្រងមណ្ឌលសុខភាព
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasCouncilInHealthManagement === "បាន" ? "☑" : "☐"}បាន
             </label>
@@ -168,16 +168,16 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៨
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ឃុំ សង្កាត់បានអនុវត្តមុខងារ
             និងការទទួលខុសត្រូវលើការងារកិច្ចការពារកុមារ
             និងគ្រប់គ្រងសេវាថែទាំកុមារ ដែលមានពិការភាព មិនមានទីពឹង
             និងក្រុមកុមារងាយរងគ្រោះ និង ងាយរងគ្រោះផ្សេងៗទៀតនៅក្នុងសហគមន៍
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasChildProtectionServices === "បាន" ? "☑" : "☐"}បាន
             </label>
@@ -187,10 +187,10 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.៩
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ឃុំ សង្កាត់ដែលបានចូលរួមគ្រប់គ្រងសំរាម សំណល់រឹង និងបញ្ហា
@@ -198,7 +198,7 @@ export default function Section7Governance({ data }: Section7Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>១.
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -218,14 +218,14 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.១១
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ឃុំ សង្កាត់បានបង្កើត និងគ្រប់គ្រងផ្សារសហគមន៍នានា
             ដើម្បីបង្កលក្ខណៈងាយស្រួល ក្នុងការទិញលក់ទំនិញ និងផលិតផលនៅតាមមូលដ្ឋាន
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
               {data.hasManagedCommunityMarket === "បាន" ? "☑" : "☐"}បាន
             </label>
@@ -235,22 +235,22 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.១២
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             ចំនួនប្រជាពលរដ្ឋ ដែលជួបប្រទះនឹងបញ្ហាប្រឈមនានាពាក់ព័ន្ធគ្រោះមហន្តរាយ
             និងជំងឺឆ្លងរាតត្បាតនានាដែលជួយដោះស្រាយដោយឃុំ សង្កាត់
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
             ចំនួន {toKhmerNum(data.disasterAffectedCitizens)} នាក់
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.១៣
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ឃុំ សង្កាត់ដែលបានរៀបចំ
@@ -261,7 +261,7 @@ export default function Section7Governance({ data }: Section7Props) {
               <li>៣. ចំនួនគម្រោងកសាងបង្គន់អនាម័យ</li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>១. 
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -284,10 +284,10 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.១៤
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ឃុំ សង្កាត់ដែលបានរៀបចំ និងអនុវត្តគម្រោង/សកម្មភាព
@@ -295,7 +295,7 @@ export default function Section7Governance({ data }: Section7Props) {
               </li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>១. 
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -314,14 +314,14 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.២.១៥
           </td>
-          <td className="border border-black p-1 font-siemreap">
+          <td className="border border-black p-1 font-siemreap text-xs">
             មុខងារចាំបាច់ផ្សេងៗទៀត ដែលឃុំ
             សង្កាត់បានអនុវត្តដើម្បីឆ្លើយតបទៅនឹងតម្រូវការចាំបាច់របស់ប្រជាពលរដ្ឋនៅមូលដ្ឋាន
           </td>
-          <td className="border border-black w-[45%] p-1 font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] p-1 font-siemreap text-xs pr-4 text-justify align-top">
             រួមមាន៖
             <div className="whitespace-pre-line min-h-[3rem]">
               {toKhmerNum(data.otherEssentialFunctions)}
@@ -329,21 +329,21 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៧.៣
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ធនធានហិរញ្ញវត្ថុ
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.៣.៤
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ឃុំ
@@ -353,7 +353,7 @@ export default function Section7Governance({ data }: Section7Props) {
               <li>២. ចំនួនថវិកាឃុំ សង្កាត់កៀរគរបាន</li>
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">
@@ -372,21 +372,21 @@ export default function Section7Governance({ data }: Section7Props) {
           </td>
         </tr>
         <tr data-pb="true">
-          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap bg-[#E8EDF8]">
+          <td className="border border-black border-t-0 w-20 p-1 text-center font-siemreap text-xs bg-[#E8EDF8]">
             ៧.៤
           </td>
           <td
-            className="border border-black border-t-0 p-1 font-siemreap bg-[#E8EDF8]"
+            className="border border-black border-t-0 p-1 font-siemreap text-xs bg-[#E8EDF8]"
             colSpan={2}
           >
             ធនធានមនុស្ស
           </td>
         </tr>
         <tr>
-          <td className="border border-black w-20 p-1 text-center font-siemreap align-top">
+          <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">
             ៧.៤.៤
           </td>
-          <td className="border border-black font-siemreap">
+          <td className="border border-black font-siemreap text-xs">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. អាកប្បកិរិយាថ្លៃថ្នូរ ស្អាតស្អំ គោរពច្បាប់ មិនរើសអើង
@@ -401,7 +401,7 @@ export default function Section7Governance({ data }: Section7Props) {
               <br />
             </ol>
           </td>
-          <td className="border border-black w-[45%] font-siemreap pr-4 text-justify align-top">
+          <td className="border border-black w-[45%] font-siemreap text-xs pr-4 text-justify align-top">
             <ol className="p-1 space-y-1 text-wrap">
               <li>
                 ១. ថ្នាក់ដឹកនាំភូមិដែលមានបរិញ្ញាបត្រឡើង{" "}
