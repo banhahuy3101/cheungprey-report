@@ -91,9 +91,6 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
   const [newUser, setNewUser] = useState({ email: "", password: "", role: "commune_chief" });
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
-  const noUserLinked = !form.user_id;
-  const showCreateUserSuggestion = userSearchQuery.length > 6 && noUserLinked;
-  const showCreateDirect = noUserLinked && !userSearchQuery;
 
   const handleCreate = async () => {
     if (!newUser.email || !newUser.password) return;
@@ -159,7 +156,7 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
           placeholder="ជ្រើសរើសអ្នកប្រើ..."
           onSearch={setUserSearchQuery}
         />
-        {(showCreateUserSuggestion || showCreateDirect) && !showCreate && (
+        {!form.user_id && !showCreate && (
           <button
             type="button"
             onClick={() => {
@@ -171,7 +168,7 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
             className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
           >
             <Plus size={14} />
-            {showCreateUserSuggestion
+            {userSearchQuery.length > 6
               ? <>បង្កើតអ្នកប្រើ <span className="font-mono">`{userSearchQuery}`</span></>
               : <>បង្កើតអ្នកប្រើថ្មី</>}
           </button>
