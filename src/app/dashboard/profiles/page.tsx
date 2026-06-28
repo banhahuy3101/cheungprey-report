@@ -20,11 +20,11 @@ import {
 } from "@/lib/user-profile-service";
 
 const MEMBERSHIP_STATUSES = [
-  { value: "active", label: "Active" },
-  { value: "pending", label: "Pending" },
-  { value: "suspended", label: "Suspended" },
-  { value: "retired", label: "Retired" },
-  { value: "removed", label: "Removed" },
+  { value: "active", label: "សមាជិកសកម្ម" },
+  { value: "pending", label: "កំពុងរង់ចាំការអនុម័ត" },
+  { value: "suspended", label: "ផ្អាកសមាជិកភាព" },
+  { value: "retired", label: "ចូលនិវត្តន៍" },
+  { value: "removed", label: "បញ្ចប់សមាជិកភាព" },
 ];
 
 const PARTY_LEVELS = [
@@ -91,7 +91,9 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
   const [newUser, setNewUser] = useState({ email: "", password: "", role: "commune_chief" });
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
-  const showCreateUser = userSearchQuery.length > 6 && !form.user_id;
+  const noUserLinked = !form.user_id;
+  const showCreateUserSuggestion = userSearchQuery.length > 6 && noUserLinked;
+  const showCreateDirect = noUserLinked && !userSearchQuery;
 
   const handleCreate = async () => {
     if (!newUser.email || !newUser.password) return;
@@ -157,13 +159,21 @@ function PersonalForm({ form, update, users: userList, onUserCreated, onNewUser 
           placeholder="ជ្រើសរើសអ្នកប្រើ..."
           onSearch={setUserSearchQuery}
         />
-        {showCreateUser && !showCreate && (
+        {(showCreateUserSuggestion || showCreateDirect) && !showCreate && (
           <button
             type="button"
-            onClick={() => setShowCreate(true)}
-            className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
+            onClick={() => {
+              if (userSearchQuery && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userSearchQuery)) {
+                setNewUser((p) => ({ ...p, email: userSearchQuery }));
+              }
+              setShowCreate(true);
+            }}
+            className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
           >
-            + បង្កើតអ្នកប្រើ `{userSearchQuery}`
+            <Plus size={14} />
+            {showCreateUserSuggestion
+              ? <>បង្កើតអ្នកប្រើ <span className="font-mono">`{userSearchQuery}`</span></>
+              : <>បង្កើតអ្នកប្រើថ្មី</>}
           </button>
         )}
         {showCreate && (
