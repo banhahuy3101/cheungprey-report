@@ -1,4 +1,5 @@
 import type { EvaluationData } from "@/features/commune-evaluation/schema";
+import { renderEditCell, type DataRowEditMeta } from "./EditableCell";
 
 const khmerDigits: Record<string, string> = {
   "0": "០", "1": "១", "2": "២", "3": "៣", "4": "៤",
@@ -18,16 +19,19 @@ function present(val: unknown): boolean {
 
 interface Section7Props {
   data: Partial<EvaluationData>;
+  editable?: boolean;
+  onUpdate?: (field: keyof EvaluationData, value: string) => void;
 }
 
-interface DataRow {
+interface DataRow extends DataRowEditMeta {
   id: string;
   indicator: string;
-  render: (d: Partial<EvaluationData>) => React.ReactNode;
+  render: (d: Partial<EvaluationData>) =>   React.ReactNode;
   fields: (keyof EvaluationData)[];
 }
 
-function filterRows(rows: DataRow[], data: Partial<EvaluationData>): DataRow[] {
+function filterRows(rows: DataRow[], data: Partial<EvaluationData>, editable?: boolean): DataRow[] {
+  if (editable) return rows;
   return rows.filter((r) => r.fields.some((f) => present(data[f])));
 }
 
@@ -181,7 +185,7 @@ const rows_7_2: DataRow[] = [
   },
   {
     id: "៧.២.១០",
-    indicator: "ឃុំ សង្កាត់បានបង្កើត និងគ្រប់គ្រងផ្សារសហគមន៍នានា",
+    indicator: "ឃុំ សង្កាត់បានបង្កើត និងគ្រប់គ្រងផ្សារសហគមន៍នានា ដើម្បីបង្កលក្ខណៈងាយស្រួលក្នុងការទិញលក់ទំនិញ និងផលិតផលនៅតាមមូលដ្ឋាន",
     render: (d) => (
       <>
         <label className="inline-flex items-center gap-1 mr-4 cursor-not-allowed">

@@ -1,4 +1,5 @@
 import type { EvaluationData } from "@/features/commune-evaluation/schema";
+import { renderEditCell, type DataRowEditMeta } from "./EditableCell";
 
 const khmerDigits: Record<string, string> = {
   "0": "០", "1": "១", "2": "២", "3": "៣", "4": "៤",
@@ -18,9 +19,11 @@ function present(val: unknown): boolean {
 
 interface Section2Props {
   data: Partial<EvaluationData>;
+  editable?: boolean;
+  onUpdate?: (field: keyof EvaluationData, value: string) => void;
 }
 
-interface DataRow {
+interface DataRow extends DataRowEditMeta {
   id: string;
   indicator: string;
   render: (d: Partial<EvaluationData>) => React.ReactNode;
@@ -33,48 +36,56 @@ const rows_2_1: DataRow[] = [
     indicator: "ចំនួនប្រជាការពារនៅតាមឃុំ សង្កាត់",
     render: (d) => <>ចំនួន {toKhmerNum(d.communeGuardCount)} នាក់</>,
     fields: ["communeGuardCount"],
+    inputType: "number",
   },
   {
     id: "២.១.២",
     indicator: "ចំនួនវគ្គបណ្តុះបណ្តាល និងពង្រឹងសមត្ថភាពប្រជាការពារ",
     render: (d) => <>ចំនួន {toKhmerNum(d.communeGuardTrainingCount)} វគ្គ</>,
     fields: ["communeGuardTrainingCount"],
+    inputType: "number",
   },
   {
     id: "២.១.៣",
     indicator: "ការគាំទ្រផ្សេងៗដល់ប្រជាការពារ",
     render: (d) => <>{d.communeGuardSupport}</>,
     fields: ["communeGuardSupport"],
+    inputType: "text",
   },
   {
     id: "២.១.៤",
     indicator: "ចំនួនមន្ត្រីនគរបាលរដ្ឋបាលនៅឃុំ សង្កាត់នីមួយៗ",
     render: (d) => <>ចំនួន {toKhmerNum(d.administrativePoliceCount)} នាក់</>,
     fields: ["administrativePoliceCount"],
+    inputType: "number",
   },
   {
     id: "២.១.៥",
     indicator: "ចំនួនវគ្គបណ្តុះបណ្តាលដែលផ្តល់ឱ្យប៉ុស្តិ៍នគរបាលរដ្ឋបាលឃុំ សង្កាត់",
     render: (d) => <>ចំនួន {toKhmerNum(d.policeTrainingCount)} វគ្គ</>,
     fields: ["policeTrainingCount"],
+    inputType: "number",
   },
   {
     id: "២.១.៦",
     indicator: "ការគាំទ្រផ្សេងៗដល់ប៉ុស្តិ៍នគរបាល",
     render: (d) => <>{d.policeSupport}</>,
     fields: ["policeSupport"],
+    inputType: "text",
   },
   {
     id: "២.១.៧",
-    indicator: "អាត្រាបទល្មើលដែលបង្ក្រាបបានធៀបនឹងបទល្មើសដែលកើតឡើង",
+    indicator: "អាត្រាបទល្មើសដែលបង្ក្រាបបានធៀបនឹងបទល្មើសដែលកើតឡើង",
     render: (d) => <>ចំនួន {toKhmerNum(d.crimeSuppressionRate)} %</>,
     fields: ["crimeSuppressionRate"],
+    inputType: "number",
   },
   {
     id: "២.១.៨",
     indicator: "ចំនួនកម្មវិធីអប់រំ និងផ្សព្វផ្សាយអំពីបញ្ហាបទល្មើស និងគ្រឿងញៀនដែលបានរៀបចំនៅតាមមូលដ្ឋាន តាមសាលារៀន និងទីតាំងនានា",
     render: (d) => <>ចំនួន {toKhmerNum(d.crimeEducationPrograms)} កម្មវិធី</>,
     fields: ["crimeEducationPrograms"],
+    inputType: "number",
   },
   {
     id: "២.១.៩",
@@ -109,10 +120,10 @@ const rows_2_2: DataRow[] = [
           {d.trafficSignsStatus === "គ្រប់គ្រាន់" ? "☑" : "☐"} គ្រប់គ្រាន់
         </label>
         <label className="inline-flex items-center gap-1 mr-4">
-          {d.trafficSignsStatus === "មិនគ្រប់គ្រាន់" ? "☑" : "☐"} មិនគ្រប់គ្រាន់
+          {d.trafficSignsStatus === "មិនគ្រប់គ្រាន់" || d.trafficSignsStatus === "មិនទាន់គ្រប់គ្រាន់" ? "☑" : "☐"} មិនគ្រប់គ្រាន់
         </label>
         <label className="inline-flex items-center gap-1">
-          {d.trafficSignsStatus === "គ្មាន" ? "☑" : "☐"} គ្មាន
+          {d.trafficSignsStatus === "គ្មាន" || d.trafficSignsStatus === "មិនមាន" ? "☑" : "☐"} គ្មាន
         </label>
       </>
     ),
@@ -181,7 +192,7 @@ export default function Section2Security({ data }: Section2Props) {
           <th className="border border-black p-1 font-moul text-xs">សូចនាករ</th>
           <th className="border border-black w-[45%] p-1 font-moul">
             <div className="text-wrap font-moul text-xs">
-              ទិន្នន័យ ឬព័ត៌មាន លទ្ធផលនៃការអនុវត្ត
+              ទិន្នន័យ ឬព័ត៌មានលទ្ធផលនៃការអនុវត្ត (គិតចាប់ពីដើមឆ្នាំ២០២២ ដល់ខែមិថុនា ឆ្នាំ២០២៦)
             </div>
           </th>
         </tr>

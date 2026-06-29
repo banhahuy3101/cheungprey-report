@@ -24,13 +24,6 @@ export const evaluationSchema = z.object({
   mandateYearStart: z.string().optional().default("2022"),
   mandateYearEnd: z.string().optional().default("2027"),
   voterRecords: z.array(voterRecordSchema).optional().default([]),
-  registeredVotersNational2023: z.string().optional().default(""),
-  registeredVotersCommune2022: z.string().optional().default(""),
-  voterTurnoutNational2023: z.string().optional().default(""),
-  voterTurnoutCommune2022: z.string().optional().default(""),
-  violenceCasesNational2023: z.string().optional().default(""),
-  violenceCasesCommune2022: z.string().optional().default(""),
-  // New voter fields with number + percentage
   voterRegistration2022Number: z.string().optional().default(""),
   voterRegistration2022Pct: z.string().optional().default(""),
   voterRegistration2025Number: z.string().optional().default(""),
@@ -41,23 +34,14 @@ export const evaluationSchema = z.object({
   voterTurnout2022Pct: z.string().optional().default(""),
   voteViolenceNational2023: z.string().optional().default(""),
   voteViolenceCommune2022: z.string().optional().default(""),
-  // General education (kept for backward compat)
-  highSchoolDiploma: z.string().optional().default(""),
-  associateDegree: z.string().optional().default(""),
-  bachelorDegree: z.string().optional().default(""),
-  masterDegree: z.string().optional().default(""),
-  // CPP-only (CPD party) education
   cpdHighSchoolDiploma: z.string().optional().default(""),
   cpdAssociateDegree: z.string().optional().default(""),
   cpdBachelorDegree: z.string().optional().default(""),
   cpdMasterDegree: z.string().optional().default(""),
   removedCouncilMembers: z.string().optional().default(""),
-  totalCouncilMembers: z.string().optional().default(""),
-  femaleCouncilMembers: z.string().optional().default(""),
-  youthCouncilMembers: z.string().optional().default(""),
   cpdTotalCouncilMembers: z.string().optional().default(""),
   cpdFemaleCouncilMembers: z.string().optional().default(""),
-  cpdYouthCouncilMembers: z.string().optional().default(""),
+  youthCouncilMembers: z.string().optional().default(""),
   totalClerks: z.string().optional().default(""),
   femaleClerks: z.string().optional().default(""),
   youthClerks: z.string().optional().default(""),
@@ -144,9 +128,6 @@ export const evaluationSchema = z.object({
   irrigationCanalsMeters: z.string().optional().default(""),
   waterInletSystems: z.string().optional().default(""),
   waterManagementTraining: z.string().optional().default(""),
-  farmingCommunities: z.string().optional().default(""),
-  farmingCommunityTraining: z.string().optional().default(""),
-  hasDroughtPumping: z.string().optional().default(""),
   electricityCoveragePct: z.string().optional().default(""),
   hasCommuneWebsite: z.string().optional().default(""),
   hasHealthCenterWebsite: z.string().optional().default(""),
@@ -165,6 +146,8 @@ export const evaluationSchema = z.object({
   hasEmergencyResponse: z.string().optional().default(""),
   hasDisasterPreparedness: z.string().optional().default(""),
   hasHumanRightsProtection: z.string().optional().default(""),
+  disasterAffectedHouseholds: z.string().optional().default(""),
+  farmingCommunities: z.string().optional().default(""),
   smallBusinessesCount: z.string().optional().default(""),
   registeredSmallBusinesses: z.string().optional().default(""),
   hasFinancialLiteracy: z.string().optional().default(""),
@@ -173,8 +156,6 @@ export const evaluationSchema = z.object({
   hasCulturalPromotion: z.string().optional().default(""),
   hasArtsTraining: z.string().optional().default(""),
   naturalResourceCrimeCases: z.string().optional().default(""),
-  hasNewMarketProjects: z.string().optional().default(""),
-  newMarketDetails: z.string().optional().default(""),
   tourismCommunities: z.string().optional().default(""),
   marketCount: z.string().optional().default(""),
   hasMarketManagement: z.string().optional().default(""),
@@ -186,25 +167,12 @@ export const evaluationSchema = z.object({
   minorityProjectsImplemented: z.string().optional().default(""),
   minorityCandidates2022: z.string().optional().default(""),
   minorityCouncilMembers2022to2026: z.string().optional().default(""),
-  hasSupportInfrastructureForDisabledElderly: z.string().optional().default(""),
   hasCommunityCareFacility: z.string().optional().default(""),
   disabledCandidates2022: z.string().optional().default(""),
   disabledCouncilMembers2022to2026: z.string().optional().default(""),
   poorHouseholdsReliefCount: z.string().optional().default(""),
-  hasGenderMainstreamingPlan: z.string().optional().default(""),
-  womenChildrenLedSmallBusinesses: z.string().optional().default(""),
-  genderMainstreamingPlanDetails: z.string().optional().default(""),
-  problemsAssessmentSessions: z.string().optional().default(""),
-  citizensParticipatingCouncilMeetings: z.string().optional().default(""),
-  citizenParticipationMechanisms: z.string().optional().default(""),
-  disputeResolutionRate: z.string().optional().default(""),
-  legalAwarenessProgramsCount: z.string().optional().default(""),
-  councilInspectionsCount: z.string().optional().default(""),
-  disciplinedCouncilMembers: z.string().optional().default(""),
-  disciplinedVillageChiefs: z.string().optional().default(""),
-  disciplinedCommuneLeaders: z.string().optional().default(""),
-  hasReceivedIncentives: z.string().optional().default(""),
-  citizenRequestsEscalated: z.string().optional().default(""),
+  hasNewMarketProjects: z.string().optional().default(""),
+  newMarketDetails: z.string().optional().default(""),
   hasCouncilInSchoolManagement: z.string().optional().default(""),
   communityPreschoolsCount: z.string().optional().default(""),
   hasManagedProtectedArea: z.string().optional().default(""),
@@ -229,11 +197,462 @@ export const evaluationSchema = z.object({
   villageLeadersWithAssociate: z.string().optional().default(""),
   villageLeadersWithHighSchool: z.string().optional().default(""),
   villageLeadersDisciplined: z.string().optional().default(""),
-  // New disaster fields
-  disasterAffectedHouseholds: z.string().optional().default(""),
+  problemsAssessmentSessions: z.string().optional().default(""),
+  citizensParticipatingCouncilMeetings: z.string().optional().default(""),
+  citizenParticipationMechanisms: z.string().optional().default(""),
+  disputeResolutionRate: z.string().optional().default(""),
+  legalAwarenessProgramsCount: z.string().optional().default(""),
+  councilInspectionsCount: z.string().optional().default(""),
+  disciplinedCouncilMembers: z.string().optional().default(""),
+  disciplinedVillageChiefs: z.string().optional().default(""),
+  disciplinedCommuneLeaders: z.string().optional().default(""),
+  hasReceivedIncentives: z.string().optional().default(""),
+  citizenRequestsEscalated: z.string().optional().default(""),
+  hasGenderMainstreamingPlan: z.string().optional().default(""),
+  womenChildrenLedSmallBusinesses: z.string().optional().default(""),
+  genderMainstreamingPlanDetails: z.string().optional().default(""),
+  // New fields from Google Doc extraction
+  agriculturalHouseholds: z.string().optional().default(""),
+  mechanizedFarmingHouseholds: z.string().optional().default(""),
+  hasAgriculturalTraining: z.string().optional().default(""),
+  hasSeedDistribution: z.string().optional().default(""),
+  seedRecipientHouseholds: z.string().optional().default(""),
+  rubberCommunities: z.string().optional().default(""),
+  livestockFarms: z.string().optional().default(""),
+  agroIndustryEstablishments: z.string().optional().default(""),
+  miningCommunityParticipation: z.string().optional().default(""),
+  hasReceivedMiningFund: z.string().optional().default(""),
+  hasNewLivelihoodProjectsForProtectedAreas: z.string().optional().default(""),
+  newLivelihoodProjectsDetails: z.string().optional().default(""),
+  borderMinistryLedProjects: z.string().optional().default(""),
+  borderMinistryLedProjectsDetails: z.string().optional().default(""),
+  hasDisabilityElderlyFund: z.string().optional().default(""),
+  hasSocialEquityNeedsIncluded: z.string().optional().default(""),
+  socialEquityProjectsCount: z.string().optional().default(""),
+  vulnerableGroupServicePriorityDetails: z.string().optional().default(""),
+  // Legacy keys still used by form components (not in display sections)
+  farmingCommunityTraining: z.string().optional().default(""),
+  hasDroughtPumping: z.string().optional().default(""),
+  hasSupportInfrastructureForDisabledElderly: z.string().optional().default(""),
 });
 
 export type EvaluationData = z.infer<typeof evaluationSchema>;
+
+export type EvaluationFieldConfig = {
+  key: string;
+  label: string;
+};
+
+export type EvaluationSubsection = {
+  subsectionNum: string;
+  subsectionTitle: string;
+  fields: EvaluationFieldConfig[];
+};
+
+export type EvaluationSection = {
+  sectionNum: string;
+  sectionTitle: string;
+  subsections: EvaluationSubsection[];
+};
+
+export type EvaluationSectionHeading = { type: "section"; label: string };
+export type EvaluationSubsectionHeading = { type: "subsection"; label: string };
+export type EvaluationDataRow = { type: "row"; label: string; value: string };
+export type EvaluationDisplayItem = EvaluationSectionHeading | EvaluationSubsectionHeading | EvaluationDataRow;
+
+export const evaluationSections: EvaluationSection[] = [
+  {
+    sectionNum: "១",
+    sectionTitle: "លទ្ធិប្រជាធិបតេយ្យ និងសិទ្ធិសេរីភាព",
+    subsections: [
+      {
+        subsectionNum: "១.១",
+        subsectionTitle: "ការចុះឈ្មោះបោះឆ្នោត និងការចូលរួមបោះឆ្នោត",
+        fields: [
+          { key: "voterRegistration2022Number", label: "១. ចំនួនប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំចុះឈ្មោះបោះឆ្នោតត្រឹមឆ្នាំ២០២២" },
+          { key: "voterRegistration2022Pct", label: "២. ភាគរយប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំចុះឈ្មោះបោះឆ្នោតត្រឹមឆ្នាំ២០២២" },
+          { key: "voterRegistration2025Number", label: "៣. ចំនួនប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំចុះឈ្មោះបោះឆ្នោតត្រឹមឆ្នាំ២០២៥" },
+          { key: "voterRegistration2025Pct", label: "៤. ភាគរយប្រជាពលរដ្ឋគ្រប់អាយុ១៨ឆ្នាំចុះឈ្មោះបោះឆ្នោតត្រឹមឆ្នាំ២០២៥" },
+          { key: "voterTurnout2017Number", label: "៥. ចំនួនប្រជាពលរដ្ឋទៅបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០១៧" },
+          { key: "voterTurnout2017Pct", label: "៦. ភាគរយប្រជាពលរដ្ឋទៅបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០១៧" },
+          { key: "voterTurnout2022Number", label: "៧. ចំនួនប្រជាពលរដ្ឋទៅបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០២២" },
+          { key: "voterTurnout2022Pct", label: "៨. ភាគរយប្រជាពលរដ្ឋទៅបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០២២" },
+          { key: "voteViolenceNational2023", label: "៩. អំពើហិង្សាពាក់ព័ន្ធនឹងការបោះឆ្នោតតំណាងរាស្រ្តឆ្នាំ២០២៣" },
+          { key: "voteViolenceCommune2022", label: "១០. អំពើហិង្សាពាក់ព័ន្ធនឹងការបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០២២" },
+        ],
+      },
+      {
+        subsectionNum: "១.២",
+        subsectionTitle: "កម្រិតវប្បធម៌ និងការយល់ដឹងផ្នែកនយោបាយ",
+        fields: [
+          { key: "cpdHighSchoolDiploma", label: "១. សមាជិកក្រុមប្រឹក្សាមានសញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ" },
+          { key: "cpdAssociateDegree", label: "២. សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្ររង" },
+          { key: "cpdBachelorDegree", label: "៣. សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្រ" },
+          { key: "cpdMasterDegree", label: "៤. សមាជិកក្រុមប្រឹក្សាមានបរិញ្ញាបត្រជាន់ខ្ពស់ឡើង" },
+          { key: "removedCouncilMembers", label: "៥. សមាជិកក្រុមប្រឹក្សាត្រូវដកចេញ ឬទទួលទណ្ឌកម្មវិន័យ" },
+        ],
+      },
+      {
+        subsectionNum: "១.៣",
+        subsectionTitle: "ការចូលរួមរបស់ស្ត្រី និងយុវជនក្នុងនយោបាយ",
+        fields: [
+          { key: "cpdTotalCouncilMembers", label: "១. ចំនួនសរុបសមាជិកក្រុមប្រឹក្សា" },
+          { key: "cpdFemaleCouncilMembers", label: "២. សមាជិកក្រុមប្រឹក្សាជាស្ត្រី" },
+          { key: "youthCouncilMembers", label: "៣. សមាជិកក្រុមប្រឹក្សាជាយុវជន" },
+          { key: "totalClerks", label: "៤. ចំនួនសរុបស្មៀនឃុំ សង្កាត់" },
+          { key: "femaleClerks", label: "៥. ស្មៀនឃុំ សង្កាត់ជាស្ត្រី" },
+          { key: "youthClerks", label: "៦. ស្មៀនឃុំ សង្កាត់ជាយុវជន" },
+          { key: "totalVillageLeaders", label: "៧. ចំនួនសរុបថ្នាក់ដឹកនាំភូមិ" },
+          { key: "femaleVillageLeaders", label: "៨. ថ្នាក់ដឹកនាំភូមិជាស្ត្រី" },
+          { key: "youthVillageLeaders", label: "៩. ថ្នាក់ដឹកនាំភូមិជាយុវជន" },
+        ],
+      },
+      {
+        subsectionNum: "១.៤",
+        subsectionTitle: "ការចូលរួមក្នុងដំណើរការអភិវឌ្ឍន៍ និងការសម្រេចចិត្ត",
+        fields: [
+          { key: "humanRightsViolations", label: "១. ករណីរំលោភសិទ្ធិមនុស្ស" },
+          { key: "publicForumParticipants", label: "២. ប្រជាពលរដ្ឋចូលរួមវេទិកាសាធារណៈ" },
+          { key: "councilMeetingParticipants", label: "៣. ប្រជាពលរដ្ឋចូលរួមកិច្ចប្រជុំក្រុមប្រឹក្សា" },
+          { key: "planningProcessParticipants", label: "៤. ប្រជាពលរដ្ឋចូលរួមរៀបចំផែនការ" },
+          { key: "hasProjectManagementCommittee", label: "៥. មានគណៈកម្មការគ្រប់គ្រងគម្រោង" },
+          { key: "administrativeServiceRecipients", label: "៦. ប្រជាពលរដ្ឋទទួលសេវារដ្ឋបាលឃុំ សង្កាត់" },
+          { key: "communityProjectsCount", label: "៧. ចំនួនគម្រោងដែលរៀបចំ និងអនុវត្តដោយឃុំ សង្កាត់" },
+          { key: "serviceRequestCases", label: "៨. សំណើ សំណូមពរ ក្តីកង្វល់ និងបញ្ហាប្រឈម" },
+          { key: "serviceResolvedCases", label: "៩. ការសម្រុះសម្រួលដោះស្រាយសំណើ" },
+        ],
+      },
+      {
+        subsectionNum: "១.៥",
+        subsectionTitle: "ការសម្រុះសម្រួលដោះស្រាយវិវាទ",
+        fields: [
+          { key: "religiousDisputeCases", label: "១. វិវាទពាក់ព័ន្ធនឹងជំនឿ ប្រពៃណី និងសាសនា" },
+          { key: "politicalDisputeCases", label: "២. វិវាទពាក់ព័ន្ធនឹងនិន្នាការនយោបាយ" },
+          { key: "hasCommunityCulturalSpace", label: "៣. មានមណ្ឌល ទីធ្លាសាធារណៈ ឬអគារវប្បធម៌" },
+        ],
+      },
+    ],
+  },
+  {
+    sectionNum: "២",
+    sectionTitle: "សន្តិសុខសាធារណៈ",
+    subsections: [
+      {
+        subsectionNum: "២.១",
+        subsectionTitle: "សន្តិសុខភូមិ ឃុំ សង្កាត់",
+        fields: [
+          { key: "communeGuardCount", label: "១. ចំនួនប្រជាការពារ" },
+          { key: "communeGuardTrainingCount", label: "២. វគ្គបណ្តុះបណ្តាលប្រជាការពារ" },
+          { key: "communeGuardSupport", label: "៣. ការគាំទ្រផ្សេងៗដល់ប្រជាការពារ" },
+        ],
+      },
+      {
+        subsectionNum: "២.២",
+        subsectionTitle: "ការគ្រប់គ្រងបទល្មើស",
+        fields: [
+          { key: "administrativePoliceCount", label: "១. ចំនួនមន្ត្រីនគរបាលរដ្ឋបាល" },
+          { key: "policeTrainingCount", label: "២. វគ្គបណ្តុះបណ្តាលប៉ុស្តិ៍នគរបាល" },
+          { key: "policeSupport", label: "៣. ការគាំទ្រផ្សេងៗដល់ប៉ុស្តិ៍នគរបាល" },
+          { key: "crimeSuppressionRate", label: "៤. អាត្រាបង្ក្រាបបទល្មើស" },
+          { key: "crimeEducationPrograms", label: "៥. កម្មវិធីអប់រំ និងផ្សព្វផ្សាយបទល្មើស" },
+          { key: "crimeEducationParticipants", label: "៦. អ្នកចូលរួមអប់រំបទល្មើស" },
+        ],
+      },
+      {
+        subsectionNum: "២.៣",
+        subsectionTitle: "សណ្តាប់ធ្នាប់ និងសុវត្ថិភាពសាធារណៈ",
+        fields: [
+          { key: "hasTrafficManagement", label: "១. មានការសម្រួលចរាចរណ៍" },
+          { key: "trafficSignsStatus", label: "២. ស្ថានភាពស្លាកសញ្ញាចរាចរណ៍" },
+          { key: "trafficAccidentCases", label: "៣. ចំនួនគ្រោះថ្នាក់ចរាចរណ៍" },
+          { key: "orderlyPlaces", label: "៤. ទីតាំងមានសណ្តាប់ធ្នាប់ល្អ" },
+          { key: "disorderlyPlaces", label: "៥. ទីតាំងមិនទាន់មានសណ្តាប់ធ្នាប់ល្អ" },
+          { key: "hasPublicParking", label: "៦. មានចំណតសាធារណៈ" },
+          { key: "trafficLawEducationSessions", label: "៧. កម្មវិធីអប់រំច្បាប់ចរាចរណ៍" },
+          { key: "trafficLawEducationParticipants", label: "៨. អ្នកចូលរួមអប់រំច្បាប់ចរាចរណ៍" },
+        ],
+      },
+    ],
+  },
+  {
+    sectionNum: "៣",
+    sectionTitle: "សេវាសាធារណៈ និងហេដ្ឋារចនាសម្ព័ន្ធ",
+    subsections: [
+      {
+        subsectionNum: "៣.១",
+        subsectionTitle: "ការផ្តល់សេវារដ្ឋបាលសាធារណៈ",
+        fields: [
+          { key: "serviceRecipientsCount", label: "១. ចំនួនអ្នកទទួលសេវារដ្ឋបាល" },
+          { key: "birthRegistrations", label: "២. បញ្ជីកំណើត" },
+          { key: "marriageRegistrations", label: "៣. បញ្ជីអាពាហ៍ពិពាហ៍" },
+          { key: "deathRegistrations", label: "៤. បញ្ជីមរណភាព" },
+          { key: "residenceBookIssued", label: "៥. សៀវភៅស្នាក់នៅ/គ្រួសារ" },
+          { key: "identityCardsIssued", label: "៦. អត្តសញ្ញាណប័ណ្ណ" },
+          { key: "feedbackMethods", label: "៧. មធ្យោបាយទទួលមតិត្រឡប់" },
+        ],
+      },
+      {
+        subsectionNum: "៣.២",
+        subsectionTitle: "ការអប់រំ",
+        fields: [
+          { key: "hasCouncilMemberSchoolCommittee", label: "១. សមាជិកក្រុមប្រឹក្សាក្នុងគណៈគ្រប់គ្រងសាលា" },
+          { key: "hasDistrictMemberSchoolCommittee", label: "២. សមាជិកក្រុមប្រឹក្សាស្រុកក្នុងគណៈគ្រប់គ្រងសាលា" },
+          { key: "schoolMeetingCount", label: "៣. កិច្ចប្រជុំគណៈគ្រប់គ្រងសាលា" },
+          { key: "hasTeacherSupport", label: "៤. ការគាំទ្រគ្រូបង្រៀនតំបន់ដាច់ស្រយាល" },
+          { key: "teacherSupportDetails", label: "៥. ការគាំទ្រគ្រូបង្រៀន" },
+          { key: "scholarshipPercentage", label: "៦. ភាគរយអាហារូបករណ៍" },
+        ],
+      },
+      {
+        subsectionNum: "៣.៣",
+        subsectionTitle: "សុខាភិបាល",
+        fields: [
+          { key: "primaryHealthcareRecipients", label: "១. អ្នកទទួលសេវាថែទាំសុខភាពបឋម" },
+          { key: "hasHealthCenter", label: "២. មណ្ឌលសុខភាព" },
+          { key: "hasReferralHospital", label: "៣. មន្ទីរពេទ្យបង្អែក" },
+          { key: "hasDoctorIncentives", label: "៤. ការលើកទឹកចិត្តគ្រូពេទ្យតំបន់ដាច់ស្រយាល" },
+          { key: "doctorSupportDetails", label: "៥. ការគាំទ្រគ្រូពេទ្យ" },
+          { key: "hasCommunityHealthParticipation", label: "៦. ការចូលរួមគ្រប់គ្រងមណ្ឌលសុខភាព" },
+          { key: "hasPublicExerciseSpace", label: "៧. ទីកន្លែងហាត់ប្រាណសាធារណៈ" },
+          { key: "healthAwarenessPrograms", label: "៨. កម្មវិធីផ្សព្វផ្សាយសុខាភិបាល" },
+          { key: "healthAwarenessParticipants", label: "៩. អ្នកចូលរួមផ្សព្វផ្សាយសុខាភិបាល" },
+        ],
+      },
+      {
+        subsectionNum: "៣.៤",
+        subsectionTitle: "ហេដ្ឋារចនាសម្ព័ន្ធ និងសេវាសាធារណៈមូលដ្ឋាន",
+        fields: [
+          { key: "newConcreteRoads", label: "១. ផ្លូវបេតុងថ្មី (ខ្សែ)" },
+          { key: "newConcreteRoadKm", label: "២. ផ្លូវបេតុងថ្មី (គីឡូម៉ែត្រ)" },
+          { key: "newAsphaltRoads", label: "៣. ផ្លូវកៅស៊ូថ្មី (ខ្សែ)" },
+          { key: "newAsphaltRoadKm", label: "៤. ផ្លូវកៅស៊ូថ្មី (គីឡូម៉ែត្រ)" },
+          { key: "repairedDirtRoads", label: "៥. ជួសជុលផ្លូវដី (ខ្សែ)" },
+          { key: "repairedDirtRoadKm", label: "៦. ជួសជុលផ្លូវដី (គីឡូម៉ែត្រ)" },
+          { key: "repairConcreteRoads", label: "៧. ជួសជុលផ្លូវបេតុង (ខ្សែ)" },
+          { key: "repairConcreteRoadKm", label: "៨. ជួសជុលផ្លូវបេតុង (គីឡូម៉ែត្រ)" },
+          { key: "repairAsphaltRoads", label: "៩. ជួសជុលផ្លូវកៅស៊ូ (ខ្សែ)" },
+          { key: "repairAsphaltRoadKm", label: "១០. ជួសជុលផ្លូវកៅស៊ូ (គីឡូម៉ែត្រ)" },
+          { key: "constructDirtRoads", label: "១១. កសាងផ្លូវដី (ខ្សែ)" },
+          { key: "constructDirtRoadKm", label: "១២. កសាងផ្លូវដី (គីឡូម៉ែត្រ)" },
+          { key: "upgradedRoadLines", label: "១៣. ផ្លូវលើកកម្រិត (ខ្សែ)" },
+          { key: "upgradedRoadKm", label: "១៤. ផ្លូវលើកកម្រិត (គីឡូម៉ែត្រ)" },
+          { key: "drainageLines", label: "១៥. ប្រឡាយរំដោះទឹក (ខ្សែ)" },
+          { key: "drainageMeters", label: "១៦. ប្រឡាយរំដោះទឹក (ម៉ែត្រ)" },
+          { key: "pumpingStations", label: "១៧. ស្ថានីយបូមទឹក" },
+          { key: "waterTreatmentPlants", label: "១៨. ប្រព័ន្ធចម្រោះទឹក" },
+          { key: "privateCommunityProjects", label: "១៩. គម្រោងឯកជន/សហគមន៍" },
+          { key: "privateCommunityProjectsKm", label: "២០. ប្រវែងគម្រោងឯកជន/សហគមន៍" },
+          { key: "cleanWaterPct", label: "២១. ភាគរយគ្រួសារមានទឹកស្អាត" },
+          { key: "pipedWaterPct", label: "២២. ភាគរយគ្រួសារមានទឹកបំពង់" },
+          { key: "smallReservoirs", label: "២៣. អាងស្តុកទឹកខ្នាតតូច" },
+          { key: "restoredWaterBodies", label: "២៤. ស្តារព្រែក បឹងបួរ" },
+          { key: "restoredWaterBodiesM", label: "២៥. ប្រវែងស្តារព្រែក បឹងបួរ" },
+          { key: "irrigationCanals", label: "២៦. ប្រឡាយស្រោចស្រពថ្មី (ខ្សែ)" },
+          { key: "irrigationCanalsMeters", label: "២៧. ប្រវែងប្រឡាយស្រោចស្រព" },
+          { key: "waterInletSystems", label: "២៨. ប្រព័ន្ធបញ្ចូលទឹក" },
+          { key: "waterManagementTraining", label: "២៩. វគ្គបណ្តុះបណ្តាលគ្រប់គ្រងទឹក" },
+          { key: "electricityCoveragePct", label: "៣០. ភាគរយភូមិមានអគ្គិសនី" },
+          { key: "hasCommuneWebsite", label: "៣១. គេហទំព័រឃុំ" },
+          { key: "hasHealthCenterWebsite", label: "៣២. គេហទំព័រមណ្ឌលសុខភាព" },
+          { key: "hasSchoolWebsite", label: "៣៣. គេហទំព័រសាលារៀន" },
+          { key: "hasPoliceWebsite", label: "៣៤. គេហទំព័រប៉ុស្តិ៍នគរបាល" },
+          { key: "landDisputeCases", label: "៣៥. ករណីដោះស្រាយវិវាទដីធ្លី" },
+          { key: "hasLandUsePlan", label: "៣៦. ផែនការប្រើប្រាស់ដី" },
+          { key: "targetCommunities", label: "៣៧. សហគមន៍គោលដៅ" },
+        ],
+      },
+      {
+        subsectionNum: "៣.៥",
+        subsectionTitle: "បរិស្ថាន និងអនាម័យ",
+        fields: [
+          { key: "hasWasteCollection", label: "១. យន្តការប្រមូលសំរាម" },
+          { key: "environmentalLawPrograms", label: "២. កម្មវិធីផ្សព្វផ្សាយច្បាប់បរិស្ថាន" },
+          { key: "environmentalLawParticipants", label: "៣. អ្នកចូលរួមផ្សព្វផ្សាយបរិស្ថាន" },
+          { key: "greenVillagePrograms", label: "៤. កម្មវិធីភូមិបៃតង" },
+          { key: "hasGreenVillageProgram", label: "៥. គោលការណ៍អភិវឌ្ឍន៍ដោយចីរភាព" },
+          { key: "foodSafetyPrograms", label: "៦. កម្មវិធីសុវត្ថិភាពចំណីអាហារ" },
+          { key: "foodPoisoningCases", label: "៧. ករណីពុលចំណីអាហារ" },
+        ],
+      },
+      {
+        subsectionNum: "៣.៦",
+        subsectionTitle: "ការគ្រប់គ្រងគ្រោះមហន្តរាយ",
+        fields: [
+          { key: "hasEmergencyResponse", label: "១. យន្តការសង្គ្រោះបឋម" },
+          { key: "hasDisasterPreparedness", label: "២. ប្រព័ន្ធការពារគ្រោះមហន្តរាយ" },
+          { key: "hasHumanRightsProtection", label: "៣. យន្តការតាមដានផលប៉ះពាល់សង្គម" },
+          { key: "disasterAffectedHouseholds", label: "៤. គ្រួសារទទួលបានការឧបត្ថម្ភស្បៀងអាហារ និងថ្នាំសង្កូវ" },
+        ],
+      },
+    ],
+  },
+  {
+    sectionNum: "៤",
+    sectionTitle: "ការអភិវឌ្ឍសេដ្ឋកិច្ចមូលដ្ឋាន",
+    subsections: [
+      {
+        subsectionNum: "៤.១",
+        subsectionTitle: "ការអភិវឌ្ឍសហគ្រាសខ្នាតតូច និងជំនាញយុវជន",
+        fields: [
+          { key: "smallBusinessesCount", label: "១. ចំនួនសហគ្រាសខ្នាតតូចបង្កើត" },
+          { key: "registeredSmallBusinesses", label: "២. ចំនួនសហគ្រាសខ្នាតតូចចុះបញ្ជី" },
+          { key: "hasFinancialLiteracy", label: "៣. ការផ្សព្វផ្សាយការគ្រប់គ្រងហិរញ្ញវត្ថុ" },
+          { key: "hasYouthSkillsTraining", label: "៤. ការបណ្តុះបណ្តាលជំនាញយុវជន" },
+          { key: "hasCommunityMarket", label: "៥. ផ្សារសហគមន៍" },
+        ],
+      },
+      {
+        subsectionNum: "៤.២",
+        subsectionTitle: "ការអភិវឌ្ឍវិស័យកសិកម្ម លើកកម្ពស់សន្តិសុខស្បៀង និងការជំរុញផលិតកម្មផ្សេងៗទៀត",
+        fields: [
+          { key: "agriculturalHouseholds", label: "១. ចំនួនគ្រួសារប្រកបរបរកសិកម្ម" },
+          { key: "mechanizedFarmingHouseholds", label: "២. ចំនួនគ្រួសារដែលប្រើប្រាស់គ្រឿងយន្ដកសិកម្ម" },
+          { key: "farmingCommunities", label: "៣. ចំនួនសហគមន៍កសិកម្មដែលបានបង្កើត" },
+          { key: "hasAgriculturalTraining", label: "៤. សហគមន៍កសិកម្មទទួលបានការបណ្តុះបណ្តាល" },
+          { key: "hasSeedDistribution", label: "៥. បានបែងចែកផ្ដល់ពូជស្រូវ បន្លែ និងដំណាំរួមផ្សំដទៃទៀត" },
+          { key: "seedRecipientHouseholds", label: "៦. ចំនួនគ្រួសារក្រីក្រ និងងាយរងគ្រោះដែលទទួលបានពូជដំណាំ" },
+          { key: "rubberCommunities", label: "៧. ចំនួនសហគមន៍កៅស៊ូគ្រួសារដែលបានបង្កើត" },
+          { key: "livestockFarms", label: "៨. ចំនួនកសិដ្ឋានចិញ្ចឹមសត្វ (ខ្នាតតូច មធ្យម និងធំ)" },
+          { key: "agroIndustryEstablishments", label: "៩. ចំនួនឧស្សាហកម្ម និងសិប្បកម្មកែច្នៃកសិផល" },
+          { key: "miningCommunityParticipation", label: "១០. សហគមន៍មូលដ្ឋាននៅតំបន់មានធនធានរ៉ែបានចូលរួមក្នុងដំណើរការរៀបចំផែនការ" },
+          { key: "hasReceivedMiningFund", label: "១១. ឃុំ សង្កាត់ទទួលបានធនធានហិរញ្ញវត្ថុបន្ថែមតាមរយៈមូលនិធិរ៉ែ" },
+        ],
+      },
+      {
+        subsectionNum: "៤.៣",
+        subsectionTitle: "ការអភិរក្ស និងអភិវឌ្ឍន៍វប្បធម៌ ធនធានធម្មជាតិ និងការជំរុញវិស័យទេសចរណ៍",
+        fields: [
+          { key: "hasCulturalPromotion", label: "១. ការផ្សព្វផ្សាយអំពីសារៈសំខាន់ និងការចូលរួមរបស់ប្រជាពលរដ្ឋក្នុងការថែរក្សាការពារសម្បត្តិវប្បធម៌" },
+          { key: "hasArtsTraining", label: "២. ការបណ្តុះបណ្តាលអំពីជំនាញសិល្បៈ សិល្បៈសូនរូប និងសិប្បកម្ម" },
+          { key: "naturalResourceCrimeCases", label: "៣. ចំនួនករណីបទល្មើសធនធានធម្មជាតិដែលត្រូវបានទប់ស្កាត់ ឬបង្រ្កាប" },
+          { key: "hasNewLivelihoodProjectsForProtectedAreas", label: "៤. ឃុំ សង្កាត់បានដាក់បញ្ចូលគម្រោងពាក់ព័ន្ធនឹងការបង្កើតមុខរបរថ្មីៗសម្រាប់សហគមន៍តំបន់ការពារធម្មជាតិ" },
+          { key: "newLivelihoodProjectsDetails", label: "៥. ប្រសិនបើបាន មានមុខរបរអ្វីខ្លះ?" },
+          { key: "tourismCommunities", label: "៦. ចំនួនសហគមន៍ទេសចរណ៍មូលដ្ឋានដែលបានបង្កើត" },
+        ],
+      },
+      {
+        subsectionNum: "៤.៤",
+        subsectionTitle: "ការអភិវឌ្ឍ និងគ្រប់គ្រងផ្សារ",
+        fields: [
+          { key: "marketCount", label: "១. ចំនួនផ្សារដែលបានសាងសង់ កែលម្អ ឬរៀបចំឡើងវិញ" },
+          { key: "hasMarketManagement", label: "២. ចំនួនផ្សារដែលមានគណៈកម្មការគ្រប់គ្រង" },
+          { key: "marketManagementQuality", label: "៣. ការគ្រប់គ្រងផ្សារនៅតាមមូលដ្ឋានឃុំ សង្កាត់ឱ្យមានសុវត្ថិភាព សណ្តាប់ធ្នាប់ អនាម័យ និងបរិស្ថានល្អ" },
+        ],
+      },
+      {
+        subsectionNum: "៤.៥",
+        subsectionTitle: "ការអភិវឌ្ឍសេដ្ឋកិច្ចមូលដ្ឋាននៅតាមតំបន់ព្រំដែន",
+        fields: [
+          { key: "borderAreaInfrastructureProjects", label: "១. ចំនួនគម្រោងហេដ្ឋារចនាសម្ព័ន្ធដែលបានសាងសង់ ឬកែលម្អនៅតំបន់ព្រំដែន (អនុវត្តដោយឃុំ សង្កាត់)" },
+          { key: "borderAreaInfrastructureDetails", label: "២. តើគម្រោងហេដ្ឋារចនាសម្ព័ន្ធដែលបានសាងសង់ ឬកែលម្អនៅតំបន់ព្រំដែនមានអ្វីខ្លះ?" },
+          { key: "borderMinistryLedProjects", label: "៣. ចំនួនគម្រោងហេដ្ឋារចនាសម្ព័ន្ធដែលបានសាងសង់ ឬកែលម្អនៅតំបន់ព្រំដែន (អនុវត្តដោយក្រសួង ស្ថាប័ន)" },
+          { key: "borderMinistryLedProjectsDetails", label: "៤. តើគម្រោងហេដ្ឋារចនាសម្ព័ន្ធដែលបានសាងសង់ ឬកែលម្អនៅតំបន់ព្រំដែនមានអ្វីខ្លះ? (អនុវត្តដោយក្រសួង)" },
+        ],
+      },
+    ],
+  },
+  {
+    sectionNum: "៥",
+    sectionTitle: "ការគាំពារសង្គម",
+    subsections: [
+      {
+        subsectionNum: "៥.១",
+        subsectionTitle: "ការលើកកម្ពស់ស្ថានភាពរបស់ស្ត្រី យុវជន និងកុមារ",
+        fields: [
+          { key: "hasDisabledChildCareServices", label: "១. ឃុំ សង្កាត់បានអនុវត្តសកម្មភាព និងផ្តល់សេវាថែទាំកុមារដែលមានពិការភាព គ្មានទីពឹង" },
+        ],
+      },
+      {
+        subsectionNum: "៥.២",
+        subsectionTitle: "ការគាំពារជនជាតិដើមភាគតិច",
+        fields: [
+          { key: "minorityNeedsIncluded", label: "១. ឃុំ សង្កាត់ដែលមានជនជាតិដើមភាគតិចបានដាក់បញ្ចូលតម្រូវការនានារបស់ជនជាតិដើមភាគតិច" },
+          { key: "minorityProjectsImplemented", label: "២. បើបានដាក់បញ្ចូល មានគម្រោងចំនួនប៉ុន្មានបានអនុវត្ដ?" },
+          { key: "minorityCandidates2022", label: "៣. ចំនួនជនជាតិដើមភាគតិចជាបេក្ខជនឈរឈ្មោះបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០២២" },
+          { key: "minorityCouncilMembers2022to2026", label: "៤. ចំនួនជនជាតិដើមភាគតិចជាសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់អាណត្តិ២០២២-២០២៦" },
+        ],
+      },
+      {
+        subsectionNum: "៥.៣",
+        subsectionTitle: "ការគាំពារជនពិការ និងជនចាស់ជរា",
+        fields: [
+          { key: "hasDisabilityElderlyFund", label: "១. ឃុំ សង្កាត់ដែលមានបង្កើតមូលនិធិសម្រាប់គាំទ្រជនមានពិការភាព និងចាស់ជរា" },
+          { key: "hasCommunityCareFacility", label: "២. ឃុំ សង្កាត់ដែលមានសមាគមន៍ពិការភាព និងចាស់ជរាមានមូលនិធិផ្ទាល់ខ្លួន" },
+          { key: "disabledCandidates2022", label: "៣. ចំនួនជនមានពិការភាពជាបេក្ខជនឈរឈ្មោះបោះឆ្នោតឃុំ សង្កាត់ឆ្នាំ២០២២" },
+          { key: "disabledCouncilMembers2022to2026", label: "៤. ចំនួនជនមានពិការភាពជាសមាជិកក្រុមប្រឹក្សាឃុំ សង្កាត់អាណត្តិ២០២២-២០២៦" },
+        ],
+      },
+      {
+        subsectionNum: "៥.៤",
+        subsectionTitle: "ការគាំពារគ្រួសារក្រីក្រ",
+        fields: [
+          { key: "poorHouseholdsReliefCount", label: "១. ចំនួនគ្រួសារក្រីក្រដែលជួបការលំបាក ប្រឈមនឹងការខ្វះទីជម្រក ខ្វះស្បៀងអាហារ និងរងផលប៉ះពាល់ពីគ្រោះមហន្តរាយទទួលបានជំនួយសង្គ្រោះបន្ទាន់" },
+        ],
+      },
+      {
+        subsectionNum: "៥.៥",
+        subsectionTitle: "ការលើកកម្ពស់សមធម៌សង្គម",
+        fields: [
+          { key: "hasSocialEquityNeedsIncluded", label: "១. ឃុំ សង្កាត់បានដាក់បញ្ចូលតម្រូវការនានាឆ្លើយតបផលប្រយោជន៍របស់ក្រុមប្រជាពលរដ្ឋផ្សេងៗគ្នា" },
+          { key: "socialEquityProjectsCount", label: "២. ចំនួនគម្រោងឆ្លើយតបតម្រូវការ និងដំណោះស្រាយចំពោះបញ្ហា និងផលប្រយោជន៍របស់ក្រុមប្រជាពលរដ្ឋផ្សេងៗគ្នា" },
+          { key: "vulnerableGroupServicePriorityDetails", label: "៣. តើរដ្ឋបាលឃុំ សង្កាត់បានផ្ដល់អាទិភាព និងបង្កលក្ខណៈងាយស្រួលដល់ក្រុមជនងាយរងគ្រោះក្នុងការទទួលសេវាសាធារណៈតាមវិធីណាខ្លះ?" },
+        ],
+      },
+    ],
+  },
+];
+
+const evaluationDataKeys = new Set(Object.keys(evaluationSchema.shape));
+const hiddenDisplayKeys = new Set(["province", "district", "commune"]);
+
+export function formatEvaluationValue(value: unknown): string {
+  if (Array.isArray(value)) {
+    if (value.length === 0) return "";
+    return value
+      .map((item, index) => {
+        if (typeof item !== "object" || item === null) return String(item);
+        const record = item as Record<string, unknown>;
+        return `${index + 1}. ឆ្នាំ ${record.year ?? ""}, ប្រភេទ ${record.electionType ?? ""}, ចុះឈ្មោះ ${record.registeredVoters ?? ""}, បោះឆ្នោត ${record.voterTurnout ?? ""}, ហិង្សា ${record.violenceCases ?? ""}`;
+      })
+      .join("\n");
+  }
+  if (value === undefined || value === null) return "";
+  return String(value);
+}
+
+export function fallbackEvaluationLabel(key: string): string {
+  return key
+    .replace(/([A-Z])/g, " $1")
+    .replace(/(\d+)/g, " $1")
+    .trim();
+}
+
+export function buildEvaluationDisplayRows(record: Record<string, unknown>): EvaluationDisplayItem[] {
+  const result: EvaluationDisplayItem[] = [];
+  for (const section of evaluationSections) {
+    let sectionHasData = false;
+    const sectionItems: EvaluationDisplayItem[] = [];
+    for (const subsection of section.subsections) {
+      const dataRows: EvaluationDataRow[] = [];
+      for (const field of subsection.fields) {
+        const value = formatEvaluationValue(record[field.key]);
+        if (value !== "") {
+          dataRows.push({ type: "row", label: field.label, value });
+        }
+      }
+      if (dataRows.length > 0) {
+        sectionItems.push({ type: "subsection", label: `${subsection.subsectionNum}. ${subsection.subsectionTitle}` });
+        sectionItems.push(...dataRows);
+        sectionHasData = true;
+      }
+    }
+    if (sectionHasData) {
+      result.push({ type: "section", label: `ផ្នែកទី ${section.sectionNum}: ${section.sectionTitle}` });
+      result.push(...sectionItems);
+    }
+  }
+  return result;
+}
 
 export const defaultEvaluationData: EvaluationData = {
   province: "",
@@ -243,19 +662,23 @@ export const defaultEvaluationData: EvaluationData = {
   mandateYearStart: "2022",
   mandateYearEnd: "2027",
   voterRecords: [],
-  registeredVotersNational2023: "",
-  registeredVotersCommune2022: "",
-  voterTurnoutNational2023: "",
-  voterTurnoutCommune2022: "",
-  violenceCasesNational2023: "",
-  violenceCasesCommune2022: "",
-  highSchoolDiploma: "",
-  associateDegree: "",
-  bachelorDegree: "",
-  masterDegree: "",
+  voterRegistration2022Number: "",
+  voterRegistration2022Pct: "",
+  voterRegistration2025Number: "",
+  voterRegistration2025Pct: "",
+  voterTurnout2017Number: "",
+  voterTurnout2017Pct: "",
+  voterTurnout2022Number: "",
+  voterTurnout2022Pct: "",
+  voteViolenceNational2023: "",
+  voteViolenceCommune2022: "",
+  cpdHighSchoolDiploma: "",
+  cpdAssociateDegree: "",
+  cpdBachelorDegree: "",
+  cpdMasterDegree: "",
   removedCouncilMembers: "",
-  totalCouncilMembers: "",
-  femaleCouncilMembers: "",
+  cpdTotalCouncilMembers: "",
+  cpdFemaleCouncilMembers: "",
   youthCouncilMembers: "",
   totalClerks: "",
   femaleClerks: "",
@@ -344,8 +767,6 @@ export const defaultEvaluationData: EvaluationData = {
   waterInletSystems: "",
   waterManagementTraining: "",
   farmingCommunities: "",
-  farmingCommunityTraining: "",
-  hasDroughtPumping: "",
   electricityCoveragePct: "",
   hasCommuneWebsite: "",
   hasHealthCenterWebsite: "",
@@ -372,8 +793,6 @@ export const defaultEvaluationData: EvaluationData = {
   hasCulturalPromotion: "",
   hasArtsTraining: "",
   naturalResourceCrimeCases: "",
-  hasNewMarketProjects: "",
-  newMarketDetails: "",
   tourismCommunities: "",
   marketCount: "",
   hasMarketManagement: "",
@@ -385,25 +804,12 @@ export const defaultEvaluationData: EvaluationData = {
   minorityProjectsImplemented: "",
   minorityCandidates2022: "",
   minorityCouncilMembers2022to2026: "",
-  hasSupportInfrastructureForDisabledElderly: "",
   hasCommunityCareFacility: "",
   disabledCandidates2022: "",
   disabledCouncilMembers2022to2026: "",
   poorHouseholdsReliefCount: "",
-  hasGenderMainstreamingPlan: "",
-  womenChildrenLedSmallBusinesses: "",
-  genderMainstreamingPlanDetails: "",
-  problemsAssessmentSessions: "",
-  citizensParticipatingCouncilMeetings: "",
-  citizenParticipationMechanisms: "",
-  disputeResolutionRate: "",
-  legalAwarenessProgramsCount: "",
-  councilInspectionsCount: "",
-  disciplinedCouncilMembers: "",
-  disciplinedVillageChiefs: "",
-  disciplinedCommuneLeaders: "",
-  hasReceivedIncentives: "",
-  citizenRequestsEscalated: "",
+  hasNewMarketProjects: "",
+  newMarketDetails: "",
   hasCouncilInSchoolManagement: "",
   communityPreschoolsCount: "",
   hasManagedProtectedArea: "",
@@ -428,22 +834,41 @@ export const defaultEvaluationData: EvaluationData = {
   villageLeadersWithAssociate: "",
   villageLeadersWithHighSchool: "",
   villageLeadersDisciplined: "",
-  voterRegistration2022Number: "",
-  voterRegistration2022Pct: "",
-  voterRegistration2025Number: "",
-  voterRegistration2025Pct: "",
-  voterTurnout2017Number: "",
-  voterTurnout2017Pct: "",
-  voterTurnout2022Number: "",
-  voterTurnout2022Pct: "",
-  voteViolenceNational2023: "",
-  voteViolenceCommune2022: "",
-  cpdHighSchoolDiploma: "",
-  cpdAssociateDegree: "",
-  cpdBachelorDegree: "",
-  cpdMasterDegree: "",
-  cpdTotalCouncilMembers: "",
-  cpdFemaleCouncilMembers: "",
-  cpdYouthCouncilMembers: "",
+  problemsAssessmentSessions: "",
+  citizensParticipatingCouncilMeetings: "",
+  citizenParticipationMechanisms: "",
+  disputeResolutionRate: "",
+  legalAwarenessProgramsCount: "",
+  councilInspectionsCount: "",
+  disciplinedCouncilMembers: "",
+  disciplinedVillageChiefs: "",
+  disciplinedCommuneLeaders: "",
+  hasReceivedIncentives: "",
+  citizenRequestsEscalated: "",
+  hasGenderMainstreamingPlan: "",
+  womenChildrenLedSmallBusinesses: "",
+  genderMainstreamingPlanDetails: "",
   disasterAffectedHouseholds: "",
+  agriculturalHouseholds: "",
+  mechanizedFarmingHouseholds: "",
+  hasAgriculturalTraining: "",
+  hasSeedDistribution: "",
+  seedRecipientHouseholds: "",
+  rubberCommunities: "",
+  livestockFarms: "",
+  agroIndustryEstablishments: "",
+  miningCommunityParticipation: "",
+  hasReceivedMiningFund: "",
+  hasNewLivelihoodProjectsForProtectedAreas: "",
+  newLivelihoodProjectsDetails: "",
+  borderMinistryLedProjects: "",
+  borderMinistryLedProjectsDetails: "",
+  hasDisabilityElderlyFund: "",
+  hasSocialEquityNeedsIncluded: "",
+  socialEquityProjectsCount: "",
+  vulnerableGroupServicePriorityDetails: "",
+  // Legacy keys
+  farmingCommunityTraining: "",
+  hasDroughtPumping: "",
+  hasSupportInfrastructureForDisabledElderly: "",
 };

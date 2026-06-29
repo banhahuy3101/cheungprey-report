@@ -1,4 +1,5 @@
 import type { EvaluationData } from "@/features/commune-evaluation/schema";
+import { renderEditCell, type DataRowEditMeta } from "./EditableCell";
 
 const khmerDigits: Record<string, string> = {
   "0": "០", "1": "១", "2": "២", "3": "៣", "4": "៤",
@@ -18,9 +19,11 @@ function present(val: unknown): boolean {
 
 interface Section3Props {
   data: Partial<EvaluationData>;
+  editable?: boolean;
+  onUpdate?: (field: keyof EvaluationData, value: string) => void;
 }
 
-interface DataRow {
+interface DataRow extends DataRowEditMeta {
   id: string;
   indicator: string;
   render: (d: Partial<EvaluationData>) => React.ReactNode;
@@ -66,7 +69,7 @@ const sub_3_1_rows: DataRow[] = [
   },
   {
     id: "៣.១.៧",
-    indicator: "មធ្យោបាយទទួលមតិត្រឡប់ជូនប្រជាពលរដ្ឋដែលឃុំ សង្កាត់កំពុងអនុវត្ត រួមមាន (ប្រអប់សំបុត្រ តេឡេក្រាម បណ្តាញទំនាក់ទំនងសង្គម ។ល។)",
+    indicator: "មធ្យោបាយទទួលមតិត្រឡប់ជូនប្រជាពលរដ្ឋដែលឃុំ សង្កាត់កំពុងអនុវត្ត រួមមាន(ប្រអប់សំបុត្រ តេឡេក្រាម បណ្តាញទំនាក់ទំនងសង្គម ។ល។)",
     render: (d) => <>{toKhmerNum(d.feedbackMethods)}</>,
     fields: ["feedbackMethods"],
   },
@@ -126,7 +129,7 @@ const sub_3_2_rows: DataRow[] = [
   },
   {
     id: "៣.២.៥",
-    indicator: "បើមានសូមរៀបរាប់ការគាំទ្រគ្រូបង្រៀននៅតាមតំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាកទាំងនោះ",
+    indicator: "បើមានសូមរៀបរាប់ការគាំទ្រគ្រូបង្រៀននៅតាមតំបន់ដាច់ស្រយាល និងតំបន់ជួបការលំបាក ទាំងនោះ",
     render: (d) => <>{toKhmerNum(d.teacherSupportDetails)}</>,
     fields: ["teacherSupportDetails"],
   },
@@ -549,7 +552,7 @@ const sub_3_10_rows: DataRow[] = [
   },
   {
     id: "៣.១០.៣",
-    indicator: "ចំនួនប្រជាពលរដ្ឋចូលរួមកម្មវិធីផ្សព្វផ្សាយច្បាប់ គោលការណ៍ និងវិធានការនានាស្តីពីកិច្ចការពារថែរក្សាបរិស្ថាន",
+    indicator: "ចំនួនប្រជាពលរដ្ឋចូលរួមកម្មវិធីផ្សព្វផ្សាយច្បាប់ គោលការណ៍ និងវិធានការនានាស្តីពីកិច្ចការពារថែរក្សាបរិស្ថាន រួមទាំងវិធីសាស្រ្តនៃការថែរក្សាសុខភាព សុវត្ថិភាពចំណីអាហារ ផលប៉ះពាល់ពីការប្រើប្រាស់សារធាតុគីមី ការប្រើគ្រឿងស្រវឹង និងថ្នាំជក់",
     render: (d) => <>ចំនួន {toKhmerNum(d.environmentalLawParticipants)} នាក់</>,
     fields: ["environmentalLawParticipants"],
   },
@@ -642,22 +645,25 @@ const sub_3_11_rows: DataRow[] = [
   },
 ];
 
-function filterRows(rows: DataRow[], data: Partial<EvaluationData>): DataRow[] {
+function filterRows(rows: DataRow[], data: Partial<EvaluationData>, editable?: boolean): DataRow[] {
+  if (editable) return rows;
   return rows.filter((r) => r.fields.some((f) => present(data[f])));
 }
 
-function IndicatorRow({ row, data }: { row: DataRow; data: Partial<EvaluationData> }) {
+function IndicatorRow({ row, data, editable, onUpdate }: { row: DataRow; data: Partial<EvaluationData>; editable?: boolean; onUpdate?: (field: keyof EvaluationData, value: string) => void }) {
   return (
     <tr>
       <td className="border border-black w-20 p-1 text-center font-siemreap text-xs align-top">{row.id}</td>
       <td className="border border-black p-1 font-siemreap text-xs">{row.indicator}</td>
-      <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">{row.render(data)}</td>
+      <td className="border border-black w-[45%] p-1 font-siemreap text-xs text-justify align-top">
+        {editable && row.inputType ? renderEditCell(row.fields, row, data, onUpdate!) : row.render(data)}
+      </td>
     </tr>
   );
 }
 
-function SubSection({ id, label, rows, data, pageBreak }: { id: string; label: string; rows: DataRow[]; data: Partial<EvaluationData>; pageBreak?: boolean }) {
-  const active = filterRows(rows, data);
+function SubSection({ id, label, rows, data, pageBreak, editable, onUpdate }: { id: string; label: string; rows: DataRow[]; data: Partial<EvaluationData>; pageBreak?: boolean; editable?: boolean; onUpdate?: (field: keyof EvaluationData, value: string) => void }) {
+  const active = filterRows(rows, data, editable);
   if (active.length === 0) return null;
   return (
     <>
@@ -666,7 +672,7 @@ function SubSection({ id, label, rows, data, pageBreak }: { id: string; label: s
         <td className="border border-black p-1 font-siemreap text-xs bg-[#E8EDF8]" colSpan={2}>{label}</td>
       </tr>
       {active.map((row) => (
-        <IndicatorRow key={row.id} row={row} data={data} />
+        <IndicatorRow key={row.id} row={row} data={data} editable={editable} onUpdate={onUpdate} />
       ))}
     </>
   );
