@@ -10,7 +10,6 @@ import {
   Users,
   History,
   LogOut,
-  ClipboardCheck,
   UserCheck,
   Settings,
   KeyRound,
@@ -52,7 +51,6 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     { href: "/dashboard/transactions", label: "ប្រតិបត្តិការ", icon: <Receipt size={18} /> },
     { href: "/dashboard/budgets", label: "ថវិកា", icon: <Wallet size={18} /> },
     { href: "/dashboard/reports", label: "របាយការណ៍", icon: <FileText size={18} /> },
-    { href: "/dashboard/commune-evaluation", label: "វាយតម្លៃឃុំ/សង្កាត់", icon: <ClipboardCheck size={18} /> },
     {
       href: "/dashboard/users",
       label: "អ្នកប្រើប្រាស់",
